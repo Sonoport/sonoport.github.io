@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 1. Getting started with WebAudio
+title: Getting started with WebAudio
 
 ---
 
@@ -16,7 +16,7 @@ title: 1. Getting started with WebAudio
 - Important methods: load(), play(), pause()
 - Important attributes: autoplay, controls, loop, muted, preload, src
 
-`< audio> `tag specifies a standard way to embed audio in a web page
+`<audio>` tag specifies a standard way to embed audio in a web page
 
 **JavaScript**: A dynamic programming language, object-oriented, commonly used to create interactive effects within web browsers.
 
@@ -36,6 +36,7 @@ title: 1. Getting started with WebAudio
 - `AudioContext.sampleRate`returns a floating point number representing sample rate used by ALL nodes
 - Sample-rate of an AudioContext cannot be changed
 - Sample-rate convertors are not supported
+
 ```
 var audioContext = new AudioContext();
 var mySampleRate = audioContext.sampleRate;
