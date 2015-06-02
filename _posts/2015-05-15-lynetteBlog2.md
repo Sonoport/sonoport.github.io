@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 2. WebAudio with Oscillators
+title: WebAudio with Oscillators
 
 ---
 **AudioNodes**: Processing modules for audio signal
@@ -9,32 +9,50 @@ title: 2. WebAudio with Oscillators
 - Linked via inputs and outputs chain
 - Contains effects eg. Filters, Reverb, Delay
 - *Audio Sources Nodes*:
-```
-OscillatorNode, AudioBuffer, AudioBufferSourceNode, MediaElecmentAudioSourceNode, MediaStreamAudioSourceNode
-```
+	- OscillatorNode
+	- AudioBuffer
+	- AudioBufferSourceNode
+	- MediaElecmentAudioSourceNode
+	- MediaStreamAudioSourceNode
+
 - *Audio Effects Nodes*:
-```
-BiquadFilterNode, ConvolverNode, DelayNode, DynamicsCompressorNode, GainNode, StereoPannerNode, WaveShaperNode, PeriodicWave
-```
+	- BiquadFilterNode
+	- ConvolverNode
+	- DelayNode
+	- DynamicsCompressorNode
+	- GainNode
+	- StereoPannerNode
+	- WaveShaperNode
+	- PeriodicWave
+
 - *Audio Destinations*:
-```
-AudioDestinationNode, MediaStreamAudioDestinationNode
-```
+	- AudioDestinationNode
+	- MediaStreamAudioDestinationNode
+
 
 **Connecting AudioNodes**
 
 - first create AudioContext to build the audio graph (linkage of AudioNodes)
-- provide versions for different browsers 
-- `var audioContext = new AudioContext();` or `var audioContext = new (window.AudioContext || window.webkitAudioContext)();`
+- provide versions for different browsers
+
+```
+var audioContext = new AudioContext();
+```
+or
+
+```
+var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+```
+
 - connecting nodes together: the node that you want to connect is given as the argument of the connect method
 - eg:
+
 ```
 source = audioContext.createMediaStreamSource(stream);
 source.connect(analyser);
 analyser.connect(distortion);
 distortion.connect(biquadFilter);
 ```
-etc.
 
 **OscillatorNode**
 
@@ -80,11 +98,8 @@ oscillator.connect(audioContext.destination);
 
 **Attribute 2:** `detune`
 
-- `a-rate`:
+- `a-rate` AudioParm
 - a detuning value (in Cents) which will offset the `frequency` by the given amount
-- default value is 0
-- `k-rate`:
-- parameter to modulate the speed at which the audio stream is rendered
 - default value is 0
 - ranges from -1200 to 1200
 
