@@ -71,6 +71,7 @@ function playSound() {
     osc.start(0);
     osc.stop(3);
 }
+
 </code></pre>
 
 The line `oscGain.connect(context.destination)` is where you connect the final signal to the computer's speakers, known here as the _destination_. The `osc.start` and `osc.stop` functions begin and end the signal respectively, and take number values defined in seconds as arguments. 
