@@ -1,14 +1,14 @@
 ---
 layout:     post
 title:      "Onwards with our Web Audio Journey"
-subtitle:   "Web Audio API: Oscillators, Filters and Gain Nodes"
+subtitle:   "Oscillators, Filters and Gain Nodes"
 date:       2015-07-29 12:00:00
 author:     "Tommy Roberson"
 header-img: "img/postheader04.png"
 ---
 
 
-To help guide you on your web audio journey our first segment will be about the Audio Context, how to create Oscillators, Filters, and Gain. 
+To help guide you on your web audio journey this segment will be about the Audio Context, how to create Oscillators, Filters, and Gain. Previously we have complied a bunch of information that would be useful for anyone to start on web audio [here](http://sonoport.github.io/2015/06/08/learning-web-audio-api/), then we explained the history of web audio [here](http://sonoport.github.io/2015/07/06/more-on-web-audio-api/) and now, we are going to talk about Nodes!
 
 Inside of the API, everything is a node! NODE! NODE! node... What is a node? Think of it as a tree. At the base of the tree (the trunk of the tree?) is the...
 
