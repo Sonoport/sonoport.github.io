@@ -2,7 +2,7 @@
 layout:     post
 title:      "Onwards with our Web Audio Journey"
 subtitle:   "Web Audio API: Oscillators, Filters and Gain Nodes"
-date:       2015-06-05 12:00:00
+date:       2015-07-29 12:00:00
 author:     "Tommy Roberson"
 header-img: "img/postheader04.png"
 ---
