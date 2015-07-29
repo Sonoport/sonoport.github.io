@@ -18,7 +18,7 @@ Firstly we would like to show you some cool examples of what **Web Audio API** i
 
 If you would like to have more news on Web Audio API and more, you can either go to our [Facebook](https://www.facebook.com/sonoport), [Twitter](https://twitter.com/sonoport), [LinkedIn](https://www.linkedin.com/company/sonoport-asia-pte-ltd) for daily updates or other Web Audio news sites such as [AudioCrawl](http://audiocrawl.co/) and [Web Audio Weekly](http://blog.chrislowis.co.uk/waw.html) where you can also sign up for newsletters.
 
-### <span style="color:darkblue">Web Audio API</span>
+<h3><span style="color:darkblue">Web Audio API</span></h3>
 
 The **Web Audio API** is a high-level **Javascript API** for processing and synthesizing audio in web applications. So what is an API? It stands for **Application Programming Inferface** and it is a set of routines, protocols, and tools for building software applications. If you are interested, a good explanation of an API would be [here](http://www.makeuseof.com/tag/api-good-technology-explained/). 
 
