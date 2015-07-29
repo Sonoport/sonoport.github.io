@@ -4,7 +4,7 @@ header-img: img/techblogheader4.png
 email: tech@sonoport.com
 description: "Sonoport Tech Blog"
 baseurl: ""
-url: ""
+url: http://localhost:4000
 twitter_username: Sonoport
 github_username:  Sonoport
 facebook_username:  Sonoport
