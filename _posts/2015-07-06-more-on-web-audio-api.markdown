@@ -10,7 +10,7 @@ header-img: "img/postheader05.png"
 Welcome to another blog post on **Web Audio API**! Previously we have complied a bunch of information that would be useful for anyone to start on web audio
 [here](http://sonoport.github.io/2015/06/08/learning-web-audio-api/). If you are not sure what is Web Audio API, it would be useful to check that out first! For today's post we would like to delve a little deeper into web audio and find out more about the history behind it! Then we shall explain what is **AudioContext** and analyse a snippet of code so that anyone without much coding background would be able to understand it too. If this tutorial is too basic for more advanced developers, perhaps one should head over to [Tizen](https://developer.tizen.org/documentation/articles/advanced-web-audio-api-usage) where they have a wonderful tutorial on **Advanced Web Audio Usage**.
 
-<span style="color:darkblue"><h3><span style="color:darkblue">Before Web Audio API there was the HTML audio element</h3></span>
+<span style="color:darkblue"><h3>Before Web Audio API there was the HTML audio element</h3></span>
 
 The introduction of the `audio` element in HTML5 was important because it allowed us to have audio playback across different browsers without having to run plugins such as Flash or Quicktime. Previously, if one does not have those plugins installed, the audio or video content in the web page cannot be properly downloaded or displayed. This was one of the common issues in regards to audio and video as the required plugins may be missing, outdated, blocked or in conflict with another plugin or extension.
 
