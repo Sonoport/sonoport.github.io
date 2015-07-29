@@ -16,23 +16,23 @@ The introduction of the `audio` element in HTML5 was important because it allowe
 
 However even with the `audio` element, there were still huge limitations on using audio with sophisticated games or interactive applications such as: 
 
-1. <span style="color:darkblue">**No precise timing controls**</span>
+1. **No precise timing controls**
 
     To build various musical applications, it's very important to have consistent and precise timing of audio events. Not just having sounds to start and stop but to be able to schedule complex scenarios such as playing musical sequences or rhythms. This is now possible with Web Audio API. However, working the audio clock is still one of the least understood topics as it can be quite complex. A good explanation of it by Chris Wilson can be found [here](http://www.html5rocks.com/en/tutorials/audio/scheduling/).
 
-2. <span style="color:darkblue">**Limited number of sounds can played at once**</span>
+2. **Limited number of sounds can played at once**
 
     It only allows single sound layering (polyphonic), a single audio stream can only be played once at a time.
 
-3. <span style="color:darkblue">**No reliable way to pre-buffer a sound**</span>
+3. **No reliable way to pre-buffer a sound**
     
     Audio streams can't be loaded unless triggered by a user touch event (`onmousedown`, `onmouseup`, `onclick`, or `ontouchstart`) and this is futher limited in Safari mobile browsers which does not support the `preload` attribute and will fail when an audio stream is played on page load.
 
-4. <span style="color:darkblue">**No way to apply real-time effects**</span>
+4. **No way to apply real-time effects**
 
-5. <span style="color:darkblue">**No way to analyse sounds**</span>
+5. **No way to analyse sounds**
 
-6. <span style="color:darkblue">**Not all browsers support the same audio file format**</span>
+6. **Not all browsers support the same audio file format**
 
     This has been a really big issue that often made developers [angry](http://phoboslab.org/log/2011/03/the-state-of-html5-audio). 
 
