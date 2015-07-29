@@ -1,5 +1,5 @@
 # Site settings
-title: 
+title:
 header-img: img/techblogheader4.png
 email: tech@sonoport.com
 description: "Sonoport Tech Blog"
@@ -10,7 +10,7 @@ github_username:  Sonoport
 facebook_username:  Sonoport
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 highlighter: pygments
 permalink: pretty
 paginate: 5
