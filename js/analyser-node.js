@@ -5,24 +5,20 @@ var analyser = context.createAnalyser();
 var WIDTH = 300;
 var HEIGHT = 300;
 
-// Create your oscillator, filter and gain node by declaring them as variables
-
-var osc = context.createOscillator();
-
-osc.frequency.value = 500;
-
-// Connect the nodes together
-
-function makeConnection() {
-    osc.connect(analyser);
-}
-
-// Play the sound inside of Chrome
-
 function playSound() {
-    analyser.connect(context.destination);
-    osc.start(0);
-    osc.stop(3);
+    var osc = context.createOscillator();
+    osc.frequency.value = 60;
+    osc.type = 'square';
+    
+    analyserGain = context.createGain();
+    analyserGain.gain.value = 0.065;
+
+    osc.start(context.currentTime);
+    osc.stop(context.currentTime + 3);
+
+    osc.connect(analyser);   
+    analyser.connect(analyserGain); /*Connect oscillator to analyser node*/
+    analyserGain.connect(context.destination);
 }
 
 var canvas = document.querySelector('.visualizer');
@@ -36,24 +32,21 @@ the number of data values you will have to play with for the visualization*/
 
 var dataArray = new Uint8Array(bufferLength);
 
-analyser.getByteTimeDomainData(dataArray); 
-
-console.log(dataArray);
-
 myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 
 function draw() {
   drawVisual = requestAnimationFrame(draw);
+  
   analyser.getByteTimeDomainData(dataArray);
   
-  myCanvas.fillStyle = 'rgb(200, 200, 200)';
+  myCanvas.fillStyle = 'rgb(68, 127, 192)';
   myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
   myCanvas.lineWidth = 2;
-      myCanvas.strokeStyle = 'rgb(0, 0, 0)';
-
-      myCanvas.beginPath();
+  myCanvas.strokeStyle = 'rgb(40, 95, 95)';
+  myCanvas.beginPath();
+  
   var sliceWidth = WIDTH * 1.0 / bufferLength;
-      var x = 0;
+  var x = 0;
   
   for(var i = 0; i < bufferLength; i++) {
    
@@ -73,11 +66,9 @@ function draw() {
       myCanvas.stroke();
 };
 
-
 var analyserButton = document.getElementById("myAnalyserButton")
 
 analyserButton.addEventListener('click', function() {
-  makeConnection();
   playSound();
   draw();
 });

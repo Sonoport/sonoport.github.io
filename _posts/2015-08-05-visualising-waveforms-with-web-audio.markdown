@@ -51,7 +51,7 @@ makeConnection();
 playSound();
 ```
 
-Now that was to show you how to use the oscillator, filter and gain nodes. For this tutorial, we won't be using those so lets simplfy this code even more. Minus the filter and gain nodes, we'll just create sound using a oscillator node.
+For the purposes of this tutorial, we will not use the BiQuadFilter node. Instead we'll just create sound using an oscillator node and a gain node.
 
 ```
 // Create the Audio Context
@@ -62,18 +62,29 @@ var context = new AudioContext();
 
 var osc = context.createOscillator();
 
-osc.frequency.value = 250;
+osc.frequency.value = 60;
 
 // Play the sound inside of Chrome
 
 function playSound() {
-    osc.connect(context.destination);
-    osc.start(0);
-    osc.stop(3);
+    var osc = context.createOscillator();
+    osc.frequency.value = 60;
+    osc.type = 'square';
+    
+    oscGain = context.createGain();
+    oscGain.gain.value = 0.2;
+
+    osc.start(context.currentTime);
+    osc.stop(context.currentTime + 3);
+
+    osc.connect(oscGain);   
+    oscGain.connect(analyser); /*Connect oscillator to analyser node*/
+    analyser.connect(context.destination);
 }
 
 playSound();
 ```
+We will also drop the makeConnection function, and connect the oscillator to the analyzer inside of our `playSound` function.
 
 You may test this code out at [JSFiddle](http://jsfiddle.net/).
 The reason why we are simplifying the code is so that you won't get confused once we integrate the _Analyser Node_, data collection methods and HTML5 __Canvas Element__.
@@ -254,7 +265,7 @@ Finally we call the draw() function to start off the process.
 draw();
 ```
 
-So the whole code we just did would look like this.
+So the whole canvas code we just did would look like this.
 
 ```
 myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
@@ -303,50 +314,48 @@ var analyser = context.createAnalyser();
 var WIDTH = 300;
 var HEIGHT = 300;
 
-// Create your oscillator, filter and gain node by declaring them as variables
-
-var osc = context.createOscillator();
-
-osc.frequency.value = 500;
-
-// Connect the nodes together
-
-function makeConnection() {
-    osc.connect(analyser);
-}
-
-// Play the sound inside of Chrome
-
 function playSound() {
-    analyser.connect(context.destination);
-    osc.start(0);
-    osc.stop(3);
-}
+    var osc = context.createOscillator();
+    osc.frequency.value = 60;
+    osc.type = 'square';
+    
+    oscGain = context.createGain();
+    oscGain.gain.value = 0.2;
 
-makeConnection();
-playSound();
+    osc.start(context.currentTime);
+    osc.stop(context.currentTime + 3);
+
+    osc.connect(oscGain);   
+    oscGain.connect(analyser); /*Connect oscillator to analyser node*/
+    analyser.connect(context.destination);
+}
 
 var canvas = document.querySelector('.visualizer');
 var myCanvas = canvas.getContext("2d");
 
 analyser.fftSize = 2048;
-var bufferLength = analyser.frequencyBinCount; //an unsigned long value half that of the FFT size. This generally equates to the number of data values you will have to play with for the visualization
+
+var bufferLength = analyser.frequencyBinCount; 
+/*an unsigned long value half that of the FFT size. This generally equates to 
+the number of data values you will have to play with for the visualization*/
+
 var dataArray = new Uint8Array(bufferLength);
 
 myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 
 function draw() {
   drawVisual = requestAnimationFrame(draw);
+  
   analyser.getByteTimeDomainData(dataArray);
   
-  myCanvas.fillStyle = 'rgb(200, 200, 200)';
+  myCanvas.fillStyle = 'rgb(230, 20, 210)';
   myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
   myCanvas.lineWidth = 2;
-      myCanvas.strokeStyle = 'rgb(0, 0, 0)';
-
-      myCanvas.beginPath();
+  myCanvas.strokeStyle = 'rgb(40, 95, 95)';
+  myCanvas.beginPath();
+  
   var sliceWidth = WIDTH * 1.0 / bufferLength;
-      var x = 0;
+  var x = 0;
   
   for(var i = 0; i < bufferLength; i++) {
    
@@ -364,9 +373,18 @@ function draw() {
   
   myCanvas.lineTo(canvas.width, canvas.height/2);
       myCanvas.stroke();
-    };
+};
 
-draw();
+var analyserButton = document.getElementById("myAnalyserButton")
+
+analyserButton.addEventListener('click', function() {
+  playSound();
+  draw();
+});
+
+
+
+
 ```
 
 One last bit of HTML to finish off the whole process. 
@@ -378,14 +396,17 @@ One last bit of HTML to finish off the whole process.
 You can check out the whole code [here](http://jsfiddle.net/aqilahmisuary/ztf5a72h/#base).
 
 <!-- Scripts & HTML -->
-<script language="javascript" type="text/javascript" src="js/analyser-node.js"></script>
+<h1>Oscillator</h1>
+<canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
 <br>
 <br>
 <button type="button" id="myAnalyserButton" class="btn btn-success btn-lg">Click for Analyser!</button>
 
+<script language="javascript" type="text/javascript" src="js/analyser-node.js"></script>
 
-<h1>Oscillator</h1>
-<canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
+
+
+
 
 
 
