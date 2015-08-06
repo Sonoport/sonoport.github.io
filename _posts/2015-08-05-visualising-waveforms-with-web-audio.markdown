@@ -176,17 +176,212 @@ Are you ready?
 <br>
 <br>
 <button type="button" id="myAnalyzerButton" class="btn btn-success btn-lg">Click for Analyzer!</button>
+As a continuation from the previous steps, we would already have the data ready for visualisation.
 
 <!-- Scripts & Styles -->
+Now firstly we would need to clear the canvas of any previous drawings to get ready for display.
 
 <body>
   <h1>Oscillator</h1>
   <canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
 </body>
+```
+myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
+```
 
 <script language="javascript" type="text/javascript" src="js/analyzer-node.js"></script>
+Then we define a function `draw()`
 
+```
+function draw() {
+```
 
+Here we are requesting `requestAnimationFrame` to keep looping the drawing function once it starts.
 
+```
+drawVisual = requestAnimationFrame(draw);
+```
 
+Then refering to the previous section on retrieving the data and copying it into our array, here is where we do it.
 
+```
+analyser.getByteTimeDomainData(dataArray);
+```
+
+After that we fill the canvas with a solid colour.
+ 
+``` 
+myCanvas.fillStyle = 'rgb(200, 200, 200)';
+myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
+```
+
+Set the width of the line and stroke colour for the waveform, then start drawing the path.
+
+```
+myCanvas.lineWidth = 2;
+    myCanvas.strokeStyle = 'rgb(0, 0, 0)';
+
+    myCanvas.beginPath();
+```
+
+Set the width of each segment of the line drawn by dividing the canvas length by array length (which is the FrequencyBinCount defined earlier). Then we define a x variable to set the position to move for drawing each segment of the line.
+
+```
+  var sliceWidth = WIDTH * 1.0 / bufferLength;
+      var x = 0;
+```
+
+Here we make a loop, defining a small segment of the waveform for each point in the buffer at a certain height based on the data point value from the array, then moving the line across to the place where the next segment will be drawn.
+
+```
+  for(var i = 0; i < bufferLength; i++) {
+   
+        var v = dataArray[i] / 128.0;
+        var y = v * HEIGHT/2;
+
+        if(i === 0) {
+          myCanvas.moveTo(x, y);
+        } else {
+          myCanvas.lineTo(x, y);
+        }
+
+        x += sliceWidth;
+      };
+```
+
+Then we finish the line on the middle, right hand side of the canvas and draw the stroke we defined. 
+
+```
+  myCanvas.lineTo(canvas.width, canvas.height/2);
+      myCanvas.stroke();
+    };
+```
+
+Finally we call the draw() function to start off the process.
+
+```
+draw();
+```
+
+So the whole code we just did would look like this.
+
+```
+myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
+
+function draw() {
+  drawVisual = requestAnimationFrame(draw);
+  analyser.getByteTimeDomainData(dataArray);
+  
+  myCanvas.fillStyle = 'rgb(200, 200, 200)';
+  myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
+  myCanvas.lineWidth = 2;
+      myCanvas.strokeStyle = 'rgb(0, 0, 0)';
+
+      myCanvas.beginPath();
+  var sliceWidth = WIDTH * 1.0 / bufferLength;
+      var x = 0;
+  
+  for(var i = 0; i < bufferLength; i++) {
+   
+        var v = dataArray[i] / 128.0;
+        var y = v * HEIGHT/2;
+
+        if(i === 0) {
+          myCanvas.moveTo(x, y);
+        } else {
+          myCanvas.lineTo(x, y);
+        }
+
+        x += sliceWidth;
+      };
+  
+  myCanvas.lineTo(canvas.width, canvas.height/2);
+      myCanvas.stroke();
+    };
+
+draw();
+```
+
+Then if we combine the web audio codes and the visualiser codes, we would get this.
+
+```
+// Create the Audio Context
+
+var context = new AudioContext();
+var analyser = context.createAnalyser();
+var WIDTH = 300;
+var HEIGHT = 300;
+
+// Create your oscillator, filter and gain node by declaring them as variables
+
+var osc = context.createOscillator();
+
+osc.frequency.value = 500;
+
+// Connect the nodes together
+
+function makeConnection() {
+    osc.connect(analyser);
+}
+
+// Play the sound inside of Chrome
+
+function playSound() {
+    analyser.connect(context.destination);
+    osc.start(0);
+    osc.stop(3);
+}
+
+makeConnection();
+playSound();
+
+var canvas = document.querySelector('.visualizer');
+var myCanvas = canvas.getContext("2d");
+
+analyser.fftSize = 2048;
+var bufferLength = analyser.frequencyBinCount; //an unsigned long value half that of the FFT size. This generally equates to the number of data values you will have to play with for the visualization
+var dataArray = new Uint8Array(bufferLength);
+
+myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
+
+function draw() {
+  drawVisual = requestAnimationFrame(draw);
+  analyser.getByteTimeDomainData(dataArray);
+  
+  myCanvas.fillStyle = 'rgb(200, 200, 200)';
+  myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
+  myCanvas.lineWidth = 2;
+      myCanvas.strokeStyle = 'rgb(0, 0, 0)';
+
+      myCanvas.beginPath();
+  var sliceWidth = WIDTH * 1.0 / bufferLength;
+      var x = 0;
+  
+  for(var i = 0; i < bufferLength; i++) {
+   
+        var v = dataArray[i] / 128.0;
+        var y = v * HEIGHT/2;
+
+        if(i === 0) {
+          myCanvas.moveTo(x, y);
+        } else {
+          myCanvas.lineTo(x, y);
+        }
+
+        x += sliceWidth;
+      };
+  
+  myCanvas.lineTo(canvas.width, canvas.height/2);
+      myCanvas.stroke();
+    };
+
+draw();
+```
+
+One last bit of HTML to finish off the whole process. 
+
+```
+  <canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
+```
+
+You can check out the whole code [here](http://jsfiddle.net/aqilahmisuary/ztf5a72h/#base).
