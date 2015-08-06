@@ -70,14 +70,14 @@ function playSound() {
     var osc = context.createOscillator();
     osc.frequency.value = 60;
     osc.type = 'square';
-    
+
     oscGain = context.createGain();
     oscGain.gain.value = 0.2;
 
     osc.start(context.currentTime);
     osc.stop(context.currentTime + 3);
 
-    osc.connect(oscGain);   
+    osc.connect(oscGain);
     oscGain.connect(analyser); /*Connect oscillator to analyser node*/
     analyser.connect(context.destination);
 }
@@ -91,12 +91,12 @@ The reason why we are simplifying the code is so that you won't get confused onc
 
 ###<span style="color:darkblue">Using the AnalyserNode</span>
 
-Now before we get to the exciting part, I would like to introduce you to the [AnalyserNode](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode) which is essential in helping us visualising our audio waveforms. 
+Now before we get to the exciting part, I would like to introduce you to the [AnalyserNode](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode) which is essential in helping us visualising our audio waveforms.
 
-**<span style="color:darkblue">So what is an AnalyserNode?</span>** 
+**<span style="color:darkblue">So what is an AnalyserNode?</span>**
 <blockquote>It is an AudioNode that passes the audio stream unchanged from the input to the output, but allows you to take the generated data, process it, and create audio visualizations.</blockquote>
 
-Our audio source is our oscillator node, and the analyser node extracts the frequency, waveform, and other data from the original oscillator node. 
+Our audio source is our oscillator node, and the analyser node extracts the frequency, waveform, and other data from the original oscillator node.
 To do this, we must create the analyser node using the [AudioContext.createAnalyser()](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createAnalyser) method.
 
 **<span style="color:darkblue">Creating the analyser node</span>**
@@ -134,7 +134,7 @@ To capture waveform data, we use:
 
 - [AnalyserNode.getFloatTimeDomainData()](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatTimeDomainData)
 
-The `AnalyserNode.getFloatFrequencyData()` will return a `Float32Array` typed array. `Float32Array` represents an array of 32-bit floating point numbers (corresponding to the C float data type) in the platform byte order. More infomation on that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array). 
+The `AnalyserNode.getFloatFrequencyData()` will return a `Float32Array` typed array. `Float32Array` represents an array of 32-bit floating point numbers (corresponding to the C float data type) in the platform byte order. More infomation on that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array).
 
 However, the rest of the methods `AnalyserNode.getByteFrequencyData()`, `AnalyserNode.getByteTimeDomainData()` and `AnalyserNode.getFloatTimeDomainData()` returns a Uint8Array, which is an array of 8-bit unsigned integers. More infomation on that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array).
 
@@ -142,7 +142,7 @@ Let say you are dealing with the fft size of 2048 (which is the default) and we 
 
 ```
 analyser.fftSize = 2048;
-var bufferLength = analyser.frequencyBinCount; 
+var bufferLength = analyser.frequencyBinCount;
 var dataArray = new Uint8Array(bufferLength);
 ```
 
@@ -152,14 +152,14 @@ That was just the process of converting the data. To actually retrieve the data 
 
 Like this:
 ```
-analyser.getByteTimeDomainData(dataArray); 
+analyser.getByteTimeDomainData(dataArray);
 ```
 
 Now then we have the audio data captured in our array and we can move on to using it to visualise our waveform, which brings us to...
 
 ###<span style="color:darkblue">The HTML5 canvas Element</span>
 
-Once again, a good reference would be [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas). 
+Once again, a good reference would be [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas).
 
 **<span style="color:darkblue">So what is the HTML5 canvas element?</span>**
 
@@ -188,38 +188,38 @@ As a continuation from the previous steps, we would already have the data ready 
 
 Now firstly we would need to clear the canvas of any previous drawings to get ready for display.
 
-```
+```js
 myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 ```
 
 Then we define a function `draw()`
 
-```
+```js
 function draw() {
 ```
 
 Here we are requesting `requestAnimationFrame` to keep looping the drawing function once it starts.
 
-```
+```js
 drawVisual = requestAnimationFrame(draw);
 ```
 
 Then refering to the previous section on retrieving the data and copying it into our array, here is where we do it.
 
-```
+```js
 analyser.getByteTimeDomainData(dataArray);
 ```
 
 After that we fill the canvas with a solid colour.
- 
-``` 
+
+```js
 myCanvas.fillStyle = 'rgb(200, 200, 200)';
 myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
 ```
 
 Set the width of the line and stroke colour for the waveform, then start drawing the path.
 
-```
+```js
 myCanvas.lineWidth = 2;
     myCanvas.strokeStyle = 'rgb(0, 0, 0)';
 
@@ -228,16 +228,16 @@ myCanvas.lineWidth = 2;
 
 Set the width of each segment of the line drawn by dividing the canvas length by array length (which is the FrequencyBinCount defined earlier). Then we define a x variable to set the position to move for drawing each segment of the line.
 
-```
+```js
   var sliceWidth = WIDTH * 1.0 / bufferLength;
       var x = 0;
 ```
 
 Here we make a loop, defining a small segment of the waveform for each point in the buffer at a certain height based on the data point value from the array, then moving the line across to the place where the next segment will be drawn.
 
-```
+```js
   for(var i = 0; i < bufferLength; i++) {
-   
+
         var v = dataArray[i] / 128.0;
         var y = v * HEIGHT/2;
 
@@ -251,9 +251,9 @@ Here we make a loop, defining a small segment of the waveform for each point in 
       };
 ```
 
-Then we finish the line on the middle, right hand side of the canvas and draw the stroke we defined. 
+Then we finish the line on the middle, right hand side of the canvas and draw the stroke we defined.
 
-```
+```js
   myCanvas.lineTo(canvas.width, canvas.height/2);
       myCanvas.stroke();
     };
@@ -261,19 +261,19 @@ Then we finish the line on the middle, right hand side of the canvas and draw th
 
 Finally we call the draw() function to start off the process.
 
-```
+```js
 draw();
 ```
 
 So the whole canvas code we just did would look like this.
 
-```
+```js
 myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 
 function draw() {
   drawVisual = requestAnimationFrame(draw);
   analyser.getByteTimeDomainData(dataArray);
-  
+
   myCanvas.fillStyle = 'rgb(200, 200, 200)';
   myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
   myCanvas.lineWidth = 2;
@@ -282,9 +282,9 @@ function draw() {
       myCanvas.beginPath();
   var sliceWidth = WIDTH * 1.0 / bufferLength;
       var x = 0;
-  
+
   for(var i = 0; i < bufferLength; i++) {
-   
+
         var v = dataArray[i] / 128.0;
         var y = v * HEIGHT/2;
 
@@ -296,7 +296,7 @@ function draw() {
 
         x += sliceWidth;
       };
-  
+
   myCanvas.lineTo(canvas.width, canvas.height/2);
       myCanvas.stroke();
     };
@@ -306,7 +306,7 @@ draw();
 
 Then if we combine the web audio codes and the visualiser codes, we would get this.
 
-```
+```js
 // Create the Audio Context
 
 var context = new AudioContext();
@@ -318,14 +318,14 @@ function playSound() {
     var osc = context.createOscillator();
     osc.frequency.value = 60;
     osc.type = 'square';
-    
+
     oscGain = context.createGain();
     oscGain.gain.value = 0.2;
 
     osc.start(context.currentTime);
     osc.stop(context.currentTime + 3);
 
-    osc.connect(oscGain);   
+    osc.connect(oscGain);
     oscGain.connect(analyser); /*Connect oscillator to analyser node*/
     analyser.connect(context.destination);
 }
@@ -335,8 +335,8 @@ var myCanvas = canvas.getContext("2d");
 
 analyser.fftSize = 2048;
 
-var bufferLength = analyser.frequencyBinCount; 
-/*an unsigned long value half that of the FFT size. This generally equates to 
+var bufferLength = analyser.frequencyBinCount;
+/*an unsigned long value half that of the FFT size. This generally equates to
 the number of data values you will have to play with for the visualization*/
 
 var dataArray = new Uint8Array(bufferLength);
@@ -345,20 +345,20 @@ myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 
 function draw() {
   drawVisual = requestAnimationFrame(draw);
-  
+
   analyser.getByteTimeDomainData(dataArray);
-  
+
   myCanvas.fillStyle = 'rgb(230, 20, 210)';
   myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
   myCanvas.lineWidth = 2;
   myCanvas.strokeStyle = 'rgb(40, 95, 95)';
   myCanvas.beginPath();
-  
+
   var sliceWidth = WIDTH * 1.0 / bufferLength;
   var x = 0;
-  
+
   for(var i = 0; i < bufferLength; i++) {
-   
+
         var v = dataArray[i] / 128.0;
         var y = v * HEIGHT/2;
 
@@ -370,7 +370,7 @@ function draw() {
 
         x += sliceWidth;
       };
-  
+
   myCanvas.lineTo(canvas.width, canvas.height/2);
       myCanvas.stroke();
 };
@@ -387,7 +387,7 @@ analyserButton.addEventListener('click', function() {
 
 ```
 
-One last bit of HTML to finish off the whole process. 
+One last bit of HTML to finish off the whole process.
 
 ```
   <canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
