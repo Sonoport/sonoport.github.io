@@ -396,11 +396,15 @@ One last bit of HTML to finish off the whole process.
 You can check out the whole code [here](http://jsfiddle.net/aqilahmisuary/ztf5a72h/#base).
 
 <!-- Scripts & HTML -->
+
+
 <h1>Oscillator</h1>
 <canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
-<br>
-<br>
-<button type="button" id="myAnalyserButton" class="btn btn-success btn-lg">Click for Analyser!</button>
+
+<div class="button-container">
+  <button type="button" id="myAnalyserButton" class="btn btn-info btn-lg button-color">Click for Analyser!</button>
+</div>
+
 
 <script language="javascript" type="text/javascript" src="js/analyser-node.js"></script>
 

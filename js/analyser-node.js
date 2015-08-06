@@ -42,7 +42,7 @@ function draw() {
   myCanvas.fillStyle = 'rgb(68, 127, 192)';
   myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
   myCanvas.lineWidth = 2;
-  myCanvas.strokeStyle = 'rgb(40, 95, 95)';
+  myCanvas.strokeStyle = 'rgb(255, 255, 255)';
   myCanvas.beginPath();
   
   var sliceWidth = WIDTH * 1.0 / bufferLength;
