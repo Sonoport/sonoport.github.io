@@ -83,6 +83,7 @@ The line `oscGain.connect(context.destination)` is where you connect the final s
 This ability to precisely time the starting and stopping of nodes is one of the most important parts of WebAudio. However, we have to keep in mind that value of time passed as arguments to the `start` and `stop` methods is in the same time coordinate system as the AudioContext's `currentTime` attribute. Think of `currentTime` as a clock which is global to a specific AudioContext. You can schedule things precisely on that clock. Hence all timings have to defined in relation to that clock.
 
 ---
+
 Lastly, we must call the functions for our browser to execute them -
 
 ```
@@ -128,3 +129,13 @@ makeConnection();
 playSound();
 ```
 
+To prove it works, click the button below...
+<br>
+<br>
+<button type="button" id="myButton" class="btn btn-success btn-lg">Click for Sound!</button>
+
+<!-- Scripts & Styles -->
+
+<script language="javascript" type="text/javascript" src="js/button-sound.js"></script>
+
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->

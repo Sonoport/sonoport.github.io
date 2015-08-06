@@ -9,9 +9,10 @@ twitter_username: Sonoport
 github_username:  Sonoport
 facebook_username:  Sonoport
 
+
 # Build settings
 markdown: redcarpet
 highlighter: pygments
-permalink: pretty
+permalink: none
 paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
