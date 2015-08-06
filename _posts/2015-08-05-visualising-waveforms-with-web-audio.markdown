@@ -173,23 +173,14 @@ It's really a lot to take in, I would recommend you to take your time learning t
 
 Are you ready?
 
-<br>
-<br>
-<button type="button" id="myAnalyzerButton" class="btn btn-success btn-lg">Click for Analyzer!</button>
 As a continuation from the previous steps, we would already have the data ready for visualisation.
 
-<!-- Scripts & Styles -->
 Now firstly we would need to clear the canvas of any previous drawings to get ready for display.
 
-<body>
-  <h1>Oscillator</h1>
-  <canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
-</body>
 ```
 myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 ```
 
-<script language="javascript" type="text/javascript" src="js/analyzer-node.js"></script>
 Then we define a function `draw()`
 
 ```
@@ -385,3 +376,17 @@ One last bit of HTML to finish off the whole process.
 ```
 
 You can check out the whole code [here](http://jsfiddle.net/aqilahmisuary/ztf5a72h/#base).
+
+<!-- Scripts & HTML -->
+<script language="javascript" type="text/javascript" src="js/analyser-node.js"></script>
+<br>
+<br>
+<button type="button" id="myAnalyserButton" class="btn btn-success btn-lg">Click for Analyser!</button>
+
+
+<h1>Oscillator</h1>
+<canvas class="visualizer";id="myCanvas";width="640" height="100"></canvas>
+
+
+
+
