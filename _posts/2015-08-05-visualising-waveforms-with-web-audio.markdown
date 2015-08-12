@@ -2,7 +2,7 @@
 layout:     post
 title:      "Visualising Waveforms with Web Audio"
 subtitle:   "Introducing the Analyser Node and the HTML5 canvas element"
-date:       2015-07-29 12:00:00
+date:       2015-08-05 12:00:00
 author:     "Aqilah Misuary"
 header-img: "img/postheader06.png"
 ---
