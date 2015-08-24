@@ -1,6 +1,6 @@
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 20px;
   color: #404040;
 }
 p {
@@ -10,28 +10,21 @@ p {
 p a {
   text-decoration: underline;
 }
-
-h1 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: lighter;
-
-}
-
-
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
 }
 a {
   color: #404040;
 }
 a:hover,
 a:focus {
-  color: #504193;
+  color: #0085a1;
 }
 a img:hover,
 a img:focus {
@@ -54,19 +47,16 @@ hr.small {
   left: 0;
   width: 100%;
   z-index: 3;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .navbar-custom .navbar-brand {
-  font-weight: 300;
-  letter-spacing: 0.5px ;
+  font-weight: 800;
 }
-
 .navbar-custom .nav li a {
-  
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom {
@@ -141,11 +131,11 @@ hr.small {
   background: no-repeat center center;
   background-color: #808080;
   background-attachment: scroll;
-  -webkit-background-size: ;
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 0px;
+  margin-bottom: 50px;
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
@@ -172,10 +162,10 @@ hr.small {
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
   font-size: 24px;
-  line-height: 1.1;
-  display: block;
+  line-height: 1.1,
+			display: block;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: lighter;
+  font-weight: 300;
   margin: 10px 0 0;
 }
 @media only screen and (min-width: 768px) {
@@ -195,14 +185,14 @@ hr.small {
 .intro-header .post-heading .subheading {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
-  margin: 10px 0 20px;
-  font-weight: 300;
+  margin: 10px 0 30px;
+  font-weight: 600;
 }
 .intro-header .post-heading .meta {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', 'Times New Roman', serif;
   font-style: italic;
-  font-weight: lighter;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 20px;
 }
 .intro-header .post-heading .meta a {
   color: white;
@@ -215,18 +205,13 @@ hr.small {
     font-size: 30px;
   }
 }
-
-.post-pic {
-  margin-top: 30px;
-}
-
 .post-preview > a {
   color: #404040;
 }
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #47555b;
+  color: #0085a1;
 }
 .post-preview > a > .post-title {
   font-size: 30px;
@@ -237,11 +222,10 @@ hr.small {
   margin: 0;
   font-weight: 300;
   margin-bottom: 10px;
-  color: #504193;
 }
 .post-preview > .post-meta {
   color: #808080;
-  font-size: 14px;
+  font-size: 18px;
   font-style: italic;
   margin-top: 0;
 }
@@ -351,7 +335,7 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #504193;
+  background-color: #0085a1;
   border: 1px solid #0085a1;
   color: white;
 }
@@ -379,7 +363,7 @@ form .row:first-child .floating-label-form-group {
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;
-  background-color: #504193;
+  background-color: #0085a1;
   border: 1px solid #0085a1;
 }
 .pager .disabled > a,
@@ -398,7 +382,7 @@ form .row:first-child .floating-label-form-group {
 ::selection {
   color: white;
   text-shadow: none;
-  background: #504193;
+  background: #0085a1;
 }
 img::selection {
   color: white;
