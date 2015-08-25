@@ -1,0 +1,12 @@
+.button-color, .button-color:visited, .button-color:active, .button-color:focus {
+	background-color: #447FC0;
+}
+
+.button-container {
+	margin-top: 10px;
+}
+
+.button-color:hover {
+	background-color:#504193; 
+}
+
