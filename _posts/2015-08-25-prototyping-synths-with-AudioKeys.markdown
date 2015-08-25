@@ -7,7 +7,7 @@ author:     "Tommy Roberson"
 header-img: "img/Mw8xBU4.png"
 ---
 
-Welome to another segment on **web audio**! We here at Sonoport hope you have found our previous tutorials fun and informative! Today, we will showcase a great new library that will take a lot of the nitty gritty of JavaScript and allow us musicians faster access to sound expirmentation! 
+Welome to another segment on **web audio**! We here at Sonoport hope you have found our previous tutorials fun and informative! Today, we will showcase a great new library that will take a lot of the nitty gritty of JavaScript and allow us musicians faster access to sound experimentation! 
 
 Kyle Stetz, designer and developer for P'unk Avenue in Philadelphia, has created a quality library for using key input to play notes on a scale, which he has aptly named __Audiokeys__. In this post, we will walk you through setting up AudioKeys as well as creating a playable custom synth using the diatonic scale. Mr. Stetz is the webaudio wizard who gave us [typedrummer](http://typedrummer.com/), and if you have yet to check it out we highly recommend it. 
 
@@ -57,11 +57,12 @@ window.onload = function(){
 ```
 
 The function `document.addEventListener` _listens_ for user key input. It receives the argument 'keypress'. Whenever a key is pressed, the function `scheduleEnv` is called with the input argument `when` being the `audioContext.currentTime`. If this all seems a tad confusing do not worry. This is why we have AudioKeys.  
----
+___
 
 Visit Kyle Stetz AudioKeys [github repository](https://github.com/kylestetz/AudioKeys). If you are new to github. There are two ways of downloading a code repository. One is to clone it into a directory you have made, the other is to simply click the Download Zip button. For the purposes of this tutorial we will not dive into the realm of git, github and version control, however feel free to find more information [here](https://git-scm.com/). 
 
 Once you have cloned/downloaded the repository into/onto your machine, please follow the next steps. 
+
 
 ###Step One###
 
