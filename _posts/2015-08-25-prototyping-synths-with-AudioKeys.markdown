@@ -74,9 +74,9 @@ Once you have cloned/downloaded the repository into/onto your machine, please fo
 
 Separate the JavaScript code from the script tags inside of the `index.html` file and add them to a new JavaScript file named `index.js` (or another name of your liking!).
 
-1. Inside of the folder named /test find the file named `index.html`.
+- Inside of the folder named /test find the file named `index.html`.
 
-2. Open `index.html` inside of your code editor and find the `<script>` tag underneath the two `<img>` tags.
+- Open `index.html` inside of your code editor and find the `<script>` tag underneath the two `<img>` tags.
 It should appear like this -
 
 ```
@@ -86,7 +86,7 @@ It should appear like this -
     <script>
 ```
 
-3. Copy all of the JavaScript code beneath the `<script>` tag until the closing `</script>` tag at the bottom of the page. The bottom should appear like this -
+- Copy all of the JavaScript code beneath the `<script>` tag until the closing `</script>` tag at the bottom of the page. The bottom should appear like this -
 
 ```
     </script>
@@ -96,7 +96,7 @@ It should appear like this -
 
 __Do not include the beginning or ending `<script> </script>` tags.__
 
-4. Paste this code into a new empty file and name it `index.js`. Put this file a new empty folder and name the folder js.
+- Paste this code into a new empty file and name it `index.js`. Put this file a new empty folder and name the folder js.
 
 
 ###Step Two###
