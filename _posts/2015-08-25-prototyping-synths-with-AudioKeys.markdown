@@ -9,7 +9,7 @@ header-img: "img/Mw8xBU4.png"
 
 Welome to another segment on **web audio**! We here at Sonoport hope you have found our previous tutorials fun and informative! Today, we will showcase a great new library that will take a lot of the nitty gritty of JavaScript and allow us musicians faster access to sound experimentation! 
 
-Kyle Stetz, designer and developer for P'unk Avenue in Philadelphia, has created a quality library for using key input to play notes on a scale, which he has aptly named __Audiokeys__. In this post, we will walk you through setting up AudioKeys as well as creating a playable custom synth using the diatonic scale. Mr. Stetz is the webaudio wizard who gave us [typedrummer](http://typedrummer.com/), and if you have yet to check it out we highly recommend it. 
+Kyle Stetz, designer and developer for P'unk Avenue in Philadelphia, has created a great library for using key input to play notes on a scale, which he has aptly named __Audiokeys__. In this post, we will walk you through setting up AudioKeys as well as creating a playable custom synth using the diatonic scale. Mr. Stetz is the webaudio wizard who gave us [typedrummer](http://typedrummer.com/), and if you have yet to check it out we highly recommend it. 
 
 In this tutorial we will walk you through the setup, and along the way explain a few of the ins and outs of JavaScript. WebAudio is a great tool, but to best harness and make the most of it one must know JavaScript as well. 
 <br>
@@ -120,7 +120,7 @@ The code above line 31 `var oscillators = {}` shows us how to define polyphony, 
 
 Kyle defines these with the string arguments 'last', 'first', 'lowest', 'highest', i.e. last note played, first note played, lowest note played or highest note played. If this seems confusing right now do not fret, upon playing with the AudioKeys itself your understanding of this concept will become more clear. 
 
-The code below line 31 is the core of the webaudio. This is where we will find our oscillator nodes, gain nodes, and we will add a filter node. Below the node connections you will see a function called `linearRampToValueAtTime`. This function allows us to perform automation and create envelopes, such as amplitude and filter envelopes. 
+The code below line 31 is the core of the webaudio. This is where we will find our oscillator nodes, gain nodes, and we will add a filter node. Below the node connections you will see a function called `linearRampToValueAtTime`. This is part of the audioparam interface inside of webaudio. Don't worry too much about audioparams for right now, we will discuss them indepth in a future toturial. For now, just know that `linearRampToaValueAtTime` allows us to perform automation and create envelopes, such as amplitude and filter envelopes. 
 
 From here we will tweak a portion of Kyle Stetz' original code. Let's add a filter by adding a BiquadFilterNode. 
 
@@ -141,7 +141,7 @@ filter.connect(gain);
 gain.connect(context.destination);
 ```
 
-Finally, we will replace `linearRampToValueAtTime`, with `exponentialRampToValueAtTime`, because the human ear perceives changes in frequency exponentially, unlike changes in amplitude which are perceived linearly. 
+Finally, we will replace `linearRampToValueAtTime`, with `exponentialRampToValueAtTime`. This ramps up the values exponentially, rather than linearly.
 
 ```
 filter.frequency.exponentialRampToValueAtTime(550, context.currentTime + 0.8);
@@ -152,7 +152,7 @@ Both linearRampToValueAtTime and exponentialRampToValueAtTime are somewhat self 
 
 In the above code, we exponentially ramp through the frequency range from 250, our orignaly filter.frequency.value, to 500. The function then ramps the frequency values down to 200, giving us a webaudio filter envelope. 
 
-Kyle has already given us an amplitude envelope below our filter envelope. 
+Kyle has already given us an amplitude at the end of his demo. 
 
 In all, the JavaScript code should appear as below.
 
@@ -209,7 +209,7 @@ In all, the JavaScript code should appear as below.
         filter.frequency.exponentialRampToValueAtTime(550, context.currentTime + 0.8);
         filter.frequency.exponentialRampToValueAtTime(200, context.currentTime + 0.2);
           
-        gain.gain.linearRampToValueAtTime(0, context.currentTime);
+        gain.gain.linearRampToValueAtTime(0.5, context.currentTime);
         gain.gain.linearRampToValueAtTime(note.velocity / 127, context.currentTime + 0.1);
 
         osc.start(0);
@@ -282,5 +282,25 @@ The HTML code should appear like below.
 </html>
 
 ```
+
+In conclusion, I hope you will find AudioKeys as useful as I have. One of the earliest struggles with webaudio was tying all the JavaScript together in order to make something more musical, something that more closely resembles an instrument. Using keyboard input is a great way to experiment with the many different abilities webaudio has to offer, as well as assisting with learning JavaScript eventlisteners and handlers.
+
+- For more information on AudioKeys and more of Kyle Stetz' developer work please poke around his [github page](https://github.com/kylestetz).
+
+- For more information on `linearRampToValueAtTime` and other parts of webaudio, please visit the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/linearRampToValueAtTime) as well as the full webaudio spec found [here](https://webaudio.github.io/web-audio-api/)
+
+- Please feel free to drop me an email with any feedback/questions at __thomas.roberson@sonoport.com__.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
