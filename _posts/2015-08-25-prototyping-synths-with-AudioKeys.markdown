@@ -7,11 +7,11 @@ author:     "Tommy Roberson"
 header-img: "img/Mw8xBU4.png"
 ---
 
-Welome to another segment on **web audio**! We here at Sonoport hope you have found our previous tutorials fun and informative! Today, we will showcase a great new library that will take a lot of the nitty gritty of JavaScript and allow us musicians faster access to sound experimentation! 
+Welome to another segment on **web audio**! We here at Sonoport hope you have found our previous tutorials fun and informative! Today, we will showcase a great new library that will take a lot of the nitty gritty of JavaScript and allow us musicians faster access to sound experimentation!
 
-Kyle Stetz, designer and developer for P'unk Avenue in Philadelphia, has created a great library for using key input to play notes on a scale, which he has aptly named __Audiokeys__. In this post, we will walk you through setting up AudioKeys as well as creating a playable custom synth using the diatonic scale. Mr. Stetz is the webaudio wizard who gave us [typedrummer](http://typedrummer.com/), and if you have yet to check it out we highly recommend it. 
+Kyle Stetz, designer and developer for P'unk Avenue in Philadelphia, has created a great library for using key input to play notes on a scale, which he has aptly named __Audiokeys__. In this post, we will walk you through setting up AudioKeys as well as creating a playable custom synth using the diatonic scale. Mr. Stetz is the webaudio wizard who gave us [typedrummer](http://typedrummer.com/), and if you have yet to check it out we highly recommend it.
 
-In this tutorial we will walk you through the setup, and along the way explain a few of the ins and outs of JavaScript. WebAudio is a great tool, but to best harness and make the most of it one must know JavaScript as well. 
+In this tutorial we will walk you through the setup, and along the way explain a few of the ins and outs of JavaScript. WebAudio is a great tool, but to best harness and make the most of it one must know JavaScript as well.
 <br>
 <br>
 
@@ -20,7 +20,7 @@ In this tutorial we will walk you through the setup, and along the way explain a
 
 So what does AudioKeys help us as with? AudioKeys will help remove the grunt work of assigning keycodes to individual notes, and will also handle webaudio's use of polyphony and octave jumps for us, similar to a keyboard workstation/MIDI controller. We can now go from playing single sounds using `start() stop()` to playing like Herbie Hancock without going through much of the grunt work of JavaScript eventhandling. This really frees us up to start doing really interesting and musical expirmentation with webaudio right out of the gate. Herbie (probably???) loves JavaScript!
 
-An example of using keyboard input to manipulate webaudio is below. 
+An example of using keyboard input to manipulate webaudio is below.
 
 ```
 
@@ -56,22 +56,22 @@ window.onload = function(){
 
 ```
 
-The function `document.addEventListener` _listens_ for user key input. It receives the argument 'keypress'. Whenever a key is pressed, the function `scheduleEnv` is called with the input argument `when` being the `audioContext.currentTime`. If this all seems a tad confusing do not worry. This is why we have AudioKeys.  
+The function `document.addEventListener` _listens_ for user key input which comes in the form of an Event named 'keypress'. Whenever a key is pressed, we call the function `scheduleEnv` input argument being the `audioContext.currentTime`. If this all seems a tad confusing do not worry. This is why we have AudioKeys.
 ___
 
-Visit Kyle Stetz AudioKeys [github repository](https://github.com/kylestetz/AudioKeys). If you are new to github. There are two ways of downloading a code repository. One is to clone it into a directory you have made, the other is to simply click the Download Zip button. For the purposes of this tutorial we will not dive into the realm of git, github and version control, however feel free to find more information [here](https://git-scm.com/). 
+Visit Kyle Stetz AudioKeys [github repository](https://github.com/kylestetz/AudioKeys). If you are new to github. There are two ways of downloading a code repository. One is to clone it into a directory you have made, the other is to simply click the Download Zip button. For the purposes of this tutorial we will not dive into the realm of git, github and version control, however feel free to find more information [here](https://git-scm.com/).
 
-Once you have cloned/downloaded the repository into/onto your machine, please follow the next steps. 
+Once you have cloned/downloaded the repository into/onto your machine, please follow the next steps.
 
 
 ###Step One###
 
-Separate the JavaSciprt code from the script tags inside of the `index.html` file and add them to a new JavaScript file named `index.js` (or another name of your liking!). 
+Separate the JavaScript code from the script tags inside of the `index.html` file and add them to a new JavaScript file named `index.js` (or another name of your liking!).
 
-1. Inside of the folder named /test find the file named `index.html`. 
+1. Inside of the folder named /test find the file named `index.html`.
 
-2. Open `index.html` inside of your code editor and find the `<script>` tag underneath the two `<img>` tags. 
-It should appear like this - 
+2. Open `index.html` inside of your code editor and find the `<script>` tag underneath the two `<img>` tags.
+It should appear like this -
 
 ```
     <img id="image1" src="../images/audiokeys-mapping-rows1.jpg" alt="">
@@ -101,39 +101,39 @@ Add a new `<script src=` to the bottom of the page just before the closing `</bo
 
 Copy and paste the dist folder, images folder, your new js folder, and the `index.html` file into a new directory and name it audiokeysJS.
 
-Phew! That's it. Now all you have to do is run a server inside of your root directory named audiokeysJS. NPM has a very usefull [command line tool to run a local server](https://www.npmjs.com/package/http-server).  
+Phew! That's it. Now all you have to do is run a server inside of your root directory named audiokeysJS. NPM has a very usefull [command line tool to run a local server](https://www.npmjs.com/package/http-server).
 
 ###<span style="color:darkblue">A look inside the code</span>###
 
-Kyle has provided us a great user interface showing us which keys match to which pitch. These are the images we find inside of the `index.html` file. 
+Kyle has provided us a great user interface showing us which keys match to which pitch. These are the images we find inside of the `index.html` file.
 
 <img src="./img/audiokeys-mapping-rows1.jpg" alt="AuioKeys">
 <img src="./img/audiokeys-mapping-rows2.jpg" alt="AuioKeys">
 
-Let's take a look at the JavaScript and webaudio code. We won't look at how AudioKeys works per se, but we will take a look at how easy it is to use AudioKeys to make webaudio more musical. 
+Let's take a look at the JavaScript and webaudio code. We won't look at how AudioKeys works per se, but we will take a look at how easy it is to use AudioKeys to make webaudio more musical.
 
 ###JavaScript###
 
-If we open up our nice new `index.js` file, we will see how Kyle impliments AudioKeys inside of his own demo. 
+If we open up our nice new `index.js` file, we will see how Kyle impliments AudioKeys inside of his own demo.
 
-The code above line 31 `var oscillators = {}` shows us how to define polyphony, the number of rows we need, and the priority of our polyphony. Priority simply means that we either give precedance to the first note or last note played within our chord. An example would be if we only have 4 note polyphony, and we decide to play a fifth, do we want to hear that fifth note or do we want to give precedance to the notes already being played? 
+The [code above line 73](https://github.com/kylestetz/AudioKeys/blob/master/test/index.html#L73) `var oscillators = {}` shows us how to define polyphony, the number of rows we need, and the priority of our polyphony. Priority simply means that we either give precedance to the first note or last note played within our chord. An example would be if we only have 4 note polyphony, and we decide to play a fifth, do we want to hear that fifth note or do we want to give precedance to the notes already being played?
 
-Kyle defines these with the string arguments 'last', 'first', 'lowest', 'highest', i.e. last note played, first note played, lowest note played or highest note played. If this seems confusing right now do not fret, upon playing with the AudioKeys itself your understanding of this concept will become more clear. 
+Kyle defines these with the string arguments 'last', 'first', 'lowest', 'highest', i.e. last note played, first note played, lowest note played or highest note played. If this seems confusing right now do not fret, upon playing with the AudioKeys itself your understanding of this concept will become more clear.
 
-The code below line 31 is the core of the webaudio. This is where we will find our oscillator nodes, gain nodes, and we will add a filter node. Below the node connections you will see a function called `linearRampToValueAtTime`. This is part of the audioparam interface inside of webaudio. Don't worry too much about audioparams for right now, we will discuss them indepth in a future toturial. For now, just know that `linearRampToaValueAtTime` allows us to perform automation and create envelopes, such as amplitude and filter envelopes. 
+The [code below line 73](https://github.com/kylestetz/AudioKeys/blob/master/test/index.html#L73) is the core of the webaudio. This is where we will find our oscillator nodes, gain nodes, and we will add a filter node. Below the node connections you will see a function called `linearRampToValueAtTime`. This is part of the audioparam interface inside of webaudio. Don't worry too much about audioparams for right now, we will discuss them indepth in a future toturial. For now, just know that `linearRampToaValueAtTime` allows us to perform automation and create envelopes, such as amplitude and filter envelopes.
 
-From here we will tweak a portion of Kyle Stetz' original code. Let's add a filter by adding a BiquadFilterNode. 
+From here we will tweak a portion of Kyle Stetz' original code. Let's add a filter by adding a BiquadFilterNode.
 
 `var filter = context.createBiquadFilter();`
 
-Now let's assign it a type of `'lowpass'` and give it a value of 250. 
+Now let's assign it a type of `'lowpass'` and give it a value of 250.
 
 ```
 filter.type = 'lowpass';
 filter.frequency.value = 250;
 ```
 
-Next step, let's switch up our connections and get our signal flow correct. 
+Next step, let's switch up our connections and get our signal flow correct.
 
 ```
 osc.connect(filter);
@@ -148,16 +148,16 @@ filter.frequency.exponentialRampToValueAtTime(550, context.currentTime + 0.8);
 filter.frequency.exponentialRampToValueAtTime(200, context.currentTime + 0.2);
 ```
 
-Both linearRampToValueAtTime and exponentialRampToValueAtTime are somewhat self explanitory. They will _ramp_ to a value, the first argument, at a specific time, the second argument. We will talk about how webaudio deals with time in another tutorial. Just know that `context.currentTime` gives us the current time in webaudio when we call it. 
+Both linearRampToValueAtTime and exponentialRampToValueAtTime are somewhat self explanitory. They will _ramp_ to a value, the first argument, at a specific time, the second argument. We will talk about how webaudio deals with time in another tutorial. Just know that `context.currentTime` gives us the current time in webaudio when we call it.
 
-In the above code, we exponentially ramp through the frequency range from 250, our orignaly filter.frequency.value, to 500. The function then ramps the frequency values down to 200, giving us a webaudio filter envelope. 
+In the above code, we exponentially ramp through the frequency range from 250, our orignaly filter.frequency.value, to 500. The function then ramps the frequency values down to 200, giving us a webaudio filter envelope.
 
-Kyle has already given us an amplitude at the end of his demo. 
+Kyle has already given us an amplitude at the end of his demo.
 
 In all, the JavaScript code should appear as below.
 
 ```
-	 
+
       window.context  = new AudioContext();
       window.keyboard = new AudioKeys({
         polyphony: 1,
@@ -196,19 +196,19 @@ In all, the JavaScript code should appear as below.
 
         osc.frequency.value = note.frequency;
         osc.type = 'square';
-        
+
         filter.type = 'lowpass';
         filter.frequency.value = 250;
-        
+
         gain.gain.value = 0;
-        
+
         osc.connect(filter);
         filter.connect(gain);
         gain.connect(context.destination);
-        
+
         filter.frequency.exponentialRampToValueAtTime(550, context.currentTime + 0.8);
         filter.frequency.exponentialRampToValueAtTime(200, context.currentTime + 0.2);
-          
+
         gain.gain.linearRampToValueAtTime(0.5, context.currentTime);
         gain.gain.linearRampToValueAtTime(note.velocity / 127, context.currentTime + 0.1);
 
@@ -230,9 +230,9 @@ In all, the JavaScript code should appear as below.
 
 ```
 
-Play with the code between lines 192 and 213 to create different tones and envelopes. 
+Play with the code between lines 192 and 213 to create different tones and envelopes.
 
-The HTML code should appear like below. 
+The HTML code should appear like below.
 
 ```
 
@@ -275,9 +275,9 @@ The HTML code should appear like below.
 
     <img id="image1" src="../images/audiokeys-mapping-rows1.jpg" alt="">
     <img id="image2" src="../images/audiokeys-mapping-rows2.jpg" style="display: none" alt="">
-    
+
     <script src="../js/index.js"></script>
-    
+
   </body>
 </html>
 
