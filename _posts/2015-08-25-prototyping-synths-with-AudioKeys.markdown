@@ -16,7 +16,7 @@ In this tutorial we will walk you through the setup, and along the way explain a
 <br>
 
 ###<span style="color:darkblue">AudioKeys by Kyle Stetz</span>
-
+ 
 
 So what does AudioKeys help us as with? AudioKeys will help remove the grunt work of assigning keycodes to individual notes, and will also handle webaudio's use of polyphony and octave jumps for us, similar to a keyboard workstation/MIDI controller. We can now go from playing single sounds using `start() stop()` to playing like Herbie Hancock without going through much of the grunt work of JavaScript eventhandling. This really frees us up to start doing really interesting and musical expirmentation with webaudio right out of the gate. Herbie (probably???) loves JavaScript!
 
@@ -57,9 +57,15 @@ window.onload = function(){
 ```
 
 The function `document.addEventListener` _listens_ for user key input which comes in the form of an Event named 'keypress'. Whenever a key is pressed, we call the function `scheduleEnv` input argument being the `audioContext.currentTime`. If this all seems a tad confusing do not worry. This is why we have AudioKeys.
+
+Try it below, click the button and begin typing -
+
+<div class="button-container">
+  <button type="button" id="AudioKeysButton" class="btn btn-info btn-lg button-color">Click for AudioKeys</button>
+</div>
 ___
 
-Visit Kyle Stetz AudioKeys [github repository](https://github.com/kylestetz/AudioKeys). If you are new to github. There are two ways of downloading a code repository. One is to clone it into a directory you have made, the other is to simply click the Download Zip button. For the purposes of this tutorial we will not dive into the realm of git, github and version control, however feel free to find more information [here](https://git-scm.com/).
+To play with the code, visit Kyle Stetz AudioKeys [github repository](https://github.com/kylestetz/AudioKeys). There are two ways of downloading a code repository. One is to clone it into a directory you have made, the other is to simply click the Download Zip button. For the purposes of this tutorial we will not dive into the realm of git, github and version control, however feel free to find more information [here](https://git-scm.com/).
 
 Once you have cloned/downloaded the repository into/onto your machine, please follow the next steps.
 
@@ -291,7 +297,8 @@ In conclusion, I hope you will find AudioKeys as useful as I have. One of the ea
 
 - Please feel free to drop me an email with any feedback/questions at __thomas.roberson@sonoport.com__.
 
-
+<script src="js/audiokeys.js"></script>
+<script src="js/playAudioKeys.js"></script>
 
 
 
