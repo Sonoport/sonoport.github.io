@@ -11,7 +11,7 @@ Welcome to another segment on **web audio**! Previously we posted a simple [tuto
 
 So...are you ready? Lets start!
 
-###<span style="color:darkblue">Simplifying the code</span>
+###<span style="color:#5680B0">Simplifying the code</span>
 
 Taken from the previous [tutorial](http://sonoport.github.io/2015/07/29/onwards-web-audio-journey/), to make sound we ended up with this code:
 
@@ -89,24 +89,24 @@ We will also drop the makeConnection function, and connect the oscillator to the
 You may test this code out at [JSFiddle](http://jsfiddle.net/).
 The reason why we are simplifying the code is so that you won't get confused once we integrate the _Analyser Node_, data collection methods and HTML5 __Canvas Element__.
 
-###<span style="color:darkblue">Using the AnalyserNode</span>
+###<span style="color:#677786">Using the AnalyserNode</span>
 
 Now before we get to the exciting part, I would like to introduce you to the [AnalyserNode](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode) which is essential in helping us visualising our audio waveforms. 
 
-**<span style="color:darkblue">So what is an AnalyserNode?</span>** 
+**<span style="color:#CAA24E">So what is an AnalyserNode?</span>** 
 <blockquote>It is an AudioNode that passes the audio stream unchanged from the input to the output, but allows you to take the generated data, process it, and create audio visualizations.</blockquote>
 
 Our audio source is our oscillator node, and the analyser node extracts the frequency, waveform, and other data from the original oscillator node. 
 To do this, we must create the analyser node using the [AudioContext.createAnalyser()](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createAnalyser) method.
 
-**<span style="color:darkblue">Creating the analyser node</span>**
+**<span style="color:#CAA24E">Creating the analyser node</span>**
 
 ```
 var context = new AudioContext();
 var analyser = context.createAnalyser();
 ```
 
-**<span style="color:darkblue">The Connections</span>**
+**<span style="color:#CAA24E">The Connections</span>**
 
 ```
 osc.connect(analyser);
@@ -118,7 +118,7 @@ An interesting thing to take note is that you do not have to connect the analyse
 
 This brings us to...
 
-**<span style="color:darkblue">Analyser Node's Data Collection Methods</span>**
+**<span style="color:#B13830">Analyser Node's Data Collection Methods</span>**
 
 There are different methods for capturing various types of data.
 
@@ -157,24 +157,24 @@ analyser.getByteTimeDomainData(dataArray);
 
 Now then we have the audio data captured in our array and we can move on to using it to visualise our waveform, which brings us to...
 
-###<span style="color:darkblue">The HTML5 canvas Element</span>
+###<span style="color:#307E91">The HTML5 canvas Element</span>
 
 Once again, a good reference would be [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas). 
 
-**<span style="color:darkblue">So what is the HTML5 canvas element?</span>**
+**<span style="color:#AAA09F">So what is the HTML5 canvas element?</span>**
 
 <blockquote>Added in HTML5, the HTML canvas element can be used to draw graphics via scripting in JavaScript. For example, it can be used to draw graphs, make photo compositions, create animations, or even do real-time video processing or rendering.</blockquote>
 
 The HTML 5 canvas element is really fun to play with and I don't think I would want to squeeze in all the tutorials in one blog post so here are some links for you to check out!
 
-**<span style="color:darkblue">Web Articles</span>**
+**<span style="color:#AAA09F">Web Articles</span>**
 
 - [w3schools.com](http://www.w3schools.com/html/html5_canvas.asp)
 - [Html5CanvasTutorials.com](http://www.html5canvastutorials.com/)
 - [TutorialsPoint.com](http://www.tutorialspoint.com/html5/html5_canvas.htm)
 - [Article on impressive HTML5 canvas experiments](http://code.tutsplus.com/articles/21-ridiculously-impressive-html5-canvas-experiments--net-14210)
 
-**<span style="color:darkblue">Video Tutorials</span>**
+**<span style="color:#AAA09F">Video Tutorials</span>**
 
 - [Video Tutorial by Adam Khoury](https://www.youtube.com/watch?v=RV3SaSH8lw0)
 - [Learning HTML5 canvas features step by step](https://www.youtube.com/watch?v=28Tf52k1wM8)

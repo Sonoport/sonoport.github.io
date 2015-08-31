@@ -15,7 +15,7 @@ In this tutorial we will walk you through the setup, and along the way explain a
 <br>
 <br>
 
-###<span style="color:darkblue">AudioKeys by Kyle Stetz</span>
+###<span style="color:#94ABC1">AudioKeys by Kyle Stetz</span>
  
 
 So what does AudioKeys help us as with? AudioKeys will help remove the grunt work of assigning keycodes to individual notes, and will also handle webaudio's use of polyphony and octave jumps for us, similar to a keyboard workstation/MIDI controller. We can now go from playing single sounds using `start() stop()` to playing like Herbie Hancock without going through much of the grunt work of JavaScript eventhandling. This really frees us up to start doing really interesting and musical expirmentation with webaudio right out of the gate. Herbie (probably???) loves JavaScript!
@@ -109,7 +109,7 @@ Copy and paste the dist folder, images folder, your new js folder, and the `inde
 
 Phew! That's it. Now all you have to do is run a server inside of your root directory named audiokeysJS. NPM has a very usefull [command line tool to run a local server](https://www.npmjs.com/package/http-server).
 
-###<span style="color:darkblue">A look inside the code</span>###
+###<span style="color:#5680B0">A look inside the code</span>###
 
 Kyle has provided us a great user interface showing us which keys match to which pitch. These are the images we find inside of the `index.html` file.
 
@@ -160,7 +160,7 @@ In the above code, we exponentially ramp through the frequency range from 250, o
 
 Kyle has already given us an amplitude at the end of his demo.
 
-In all, the JavaScript code should appear as below.
+In all, the JavaScript code should appear as below:
 
 ```
 
@@ -238,7 +238,7 @@ In all, the JavaScript code should appear as below.
 
 Play with the code between lines 192 and 213 to create different tones and envelopes.
 
-The HTML code should appear like below.
+The HTML code should appear as below:
 
 ```
 
