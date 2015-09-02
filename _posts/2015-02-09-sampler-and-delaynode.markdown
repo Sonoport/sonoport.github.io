@@ -23,7 +23,7 @@ ___
 
 Just kidding. Using the webaudio API, JavaScript will decode our digital audio data for us. But first, we must fetch our audio data from a server. 
 
-This is where things get a little messy. You will need to either store your files on your own web server, or use a cloud storage provider that permits you to use an XMLHttpRequest. For the purposes of this tutorial, I will be using Dropbox. 
+This is where things get a little messy. You will need to either store your files on your own web server, or use a cloud storage provider that permits you to use an XMLHttpRequest. You store them in a GitHub repository, however in this tutorial, I will be using Dropbox. 
 
 To create a Dropbox account head over to [here](https://www.dropbox.com/). To use a Dropbox account to request audio files we must place our audio files into a *public* folder. 
 
