@@ -45,13 +45,14 @@ window.keyboard = new AudioKeys({
 
 Above we have created a context variable inside of the window object and assigned it to a new instance of the `AudioContext()`. We then did the same with window.keybaord, only we assigned it to a new instance of `AudioKeys` assigning polyphony to 4.
 ___
-Now, for the fun part. 
+Now, for the fun part. Stored on my Dropbox public folder are four files named Kick.wav, Tom.wav, Snare.wav and Hihat.wav. 
+
+These are mapped to the **a, j, g and p keys** respectively. 
 
 <div class="button-container">
   <button type="button" id="Play-Sampler-Button" class="btn btn-info btn-lg button-color">Click for Sampler</button>
 </div>
 
-Stored on my Dropbox public folder are four files named Kick.wav, Tom.wav, Snare.wav and Hihat.wav. These are mapped to the a, j, g and p keys respectively. 
 
 Below is how JavaScript receives the Kick.wav file from the server. 
 
