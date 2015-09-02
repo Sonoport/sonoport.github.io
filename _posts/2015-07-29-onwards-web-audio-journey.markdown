@@ -4,7 +4,7 @@ title:      "Onwards with our Web Audio Journey"
 subtitle:   "Oscillators, Filters and Gain Nodes"
 date:       2015-07-29 12:00:00
 author:     "Tommy Roberson"
-header-img: "img/postheader04.png"
+header-img: "/img/highway-header.jpg"
 ---
 
 To help guide you on your web audio journey this segment will be about the Audio Context, how to create Oscillators, Filters, and Gain nodes. Previously we have complied a bunch of information that would be useful for anyone to start on web audio

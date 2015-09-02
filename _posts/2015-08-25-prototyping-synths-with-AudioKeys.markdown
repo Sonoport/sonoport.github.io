@@ -4,18 +4,18 @@ title:      "AudioKeys"
 subtitle:   "Prototyping Synth designs using Kyle Stetz AudioKeys library"
 date:       2015-08-25 12:05:00
 author:     "Tommy Roberson"
-header-img: "img/Mw8xBU4.png"
+header-img: "/img/Mw8xBU4.png"
 ---
 
-Welome to another segment on **web audio**! We here at Sonoport hope you have found our previous tutorials fun and informative! Today, we will showcase a great new library that will take a lot of the nitty gritty of JavaScript and allow us musicians faster access to sound experimentation!
+Welome to another segment on *web audio*! We here at Sonoport hope you have found our previous tutorials fun and informative! Today, we will showcase a great new library that will take a lot of the nitty gritty of JavaScript and allow us musicians faster access to sound experimentation!
 
-Kyle Stetz, designer and developer for P'unk Avenue in Philadelphia, has created a great library for using key input to play notes on a scale, which he has aptly named __Audiokeys__. In this post, we will walk you through setting up AudioKeys as well as creating a playable custom synth using the diatonic scale. Mr. Stetz is the webaudio wizard who gave us [typedrummer](http://typedrummer.com/), and if you have yet to check it out we highly recommend it.
+Kyle Stetz, designer and developer for P'unk Avenue in Philadelphia, has created a great library for using key input to play notes on a scale, which he has aptly named *Audiokeys*. In this post, we will walk you through setting up AudioKeys as well as creating a playable custom synth using the diatonic scale. Mr. Stetz is the webaudio wizard who gave us [typedrummer](http://typedrummer.com/), and if you have yet to check it out we highly recommend it.
 
 In this tutorial we will walk you through the setup, and along the way explain a few of the ins and outs of JavaScript. WebAudio is a great tool, but to best harness and make the most of it one must know JavaScript as well.
 <br>
 <br>
 
-###<span style="color:#94ABC1">AudioKeys by Kyle Stetz</span>
+###<span style="color:#94ABC1">AudioKeys by Kyle Stetz</span>###
  
 
 So what does AudioKeys help us as with? AudioKeys will help remove the grunt work of assigning keycodes to individual notes, and will also handle webaudio's use of polyphony and octave jumps for us, similar to a keyboard workstation/MIDI controller. We can now go from playing single sounds using `start() stop()` to playing like Herbie Hancock without going through much of the grunt work of JavaScript eventhandling. This really frees us up to start doing really interesting and musical expirmentation with webaudio right out of the gate. Herbie (probably???) loves JavaScript!

@@ -4,7 +4,7 @@ title:      "Visualising Waveforms with Web Audio"
 subtitle:   "Introducing the Analyser Node and the HTML5 canvas element"
 date:       2015-08-05 12:05:00
 author:     "Aqilah Misuary"
-header-img: "img/postheader06.png"
+header-img: "/img/swirl.jpg"
 ---
 
 Welcome to another segment on **web audio**! Previously we posted a simple [tutorial](http://sonoport.github.io/2015/07/29/onwards-web-audio-journey/) on how to use **oscillators**, **filters** and **gain nodes**. That tutorial will come in handy here as we're about to go one step further, which is to have basic visualisation of waveforms using web audio. A good reference would be [this](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API), however when we first started it was difficult to understand most of that because we basically dived in straight into web audio without really understanding any of the basics yet. So to prevent that, you might want to read our previous web audio articles [here](sonoport.github.io) before moving on.

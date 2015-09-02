@@ -4,7 +4,7 @@ title:      "Learning Web Audio API"
 subtitle:   "Shedding some light on Web Audio API"
 date:       2015-06-08 12:00:00
 author:     "Aqilah Misuary"
-header-img: "img/postheader02.png"
+header-img: "/img/breaktime.jpg"
 ---
 
 Hey there! Thank you for visiting [Sonoport](http://sonoport.com/)'s tech blog! We hope that you had a wonderful weekend! This week we would like to shed some light on [Web Audio API](http://webaudio.github.io/web-audio-api/) by pointing out the different sources available on the net where you can learn more about it (there are so many!), different examples of its many uses and tips on learning it as a non-developer without any background in coding.
@@ -18,7 +18,7 @@ Firstly we would like to show you some cool examples of what **Web Audio API** i
 
 If you would like to have more news on Web Audio API and more, you can either go to our [Facebook](https://www.facebook.com/sonoport), [Twitter](https://twitter.com/sonoport), [LinkedIn](https://www.linkedin.com/company/sonoport-asia-pte-ltd) for daily updates or other Web Audio news sites such as [AudioCrawl](http://audiocrawl.co/) and [Web Audio Weekly](http://blog.chrislowis.co.uk/waw.html) where you can also sign up for newsletters.
 
-<h3><span style="color:darkblue">Web Audio API</span></h3>
+<h3><span style="color:#425C70">Web Audio API</span></h3>
 
 The **Web Audio API** is a high-level **Javascript API** for processing and synthesizing audio in web applications. So what is an API? It stands for **Application Programming Inferface** and it is a set of routines, protocols, and tools for building software applications. If you are interested, a good explanation of an API would be [here](http://www.makeuseof.com/tag/api-good-technology-explained/). 
 
@@ -26,7 +26,7 @@ So what **Web Audio API** helps us to do is to control audio in browsers. A more
 
 Don't worry if you are still unsure about what exactly Web Audio API does and how to implement it because there is a learning curve but with patience and loads of research you should be able to grasp it in no time!
 
-### <span style="color:darkblue">Learning Web Audio API as a Non-Developer</span>
+### <span style="color:#425C70">Learning Web Audio API as a Non-Developer</span>
 
 There are several ways to start learning about Web Audio API. If you do have a basic knowledge of how audio signal flow works, routing it, and what do filters do..etc you can start by playing with this [Web Audio Tool](http://www.webaudiotool.com/) where you can visually see what is going on and experiment with the tools available. After you are done creating your patch, you can also generate the code for it to study or keep for your own reference.
 
@@ -38,7 +38,7 @@ To just jump straight into learning about Web Audio API, you can begin by going 
 
 Once you are comfortable enough to start experimenting on your own, you can start by using online tools such as [JSfiddle](http://jsfiddle.net/), [Codepen](Codepen.io), [Bitbucket](https://bitbucket.org/) or [Github](https://github.com/). If you would like to have more options, there're several other links available below for your own resources. We hope that this article was helpful for you and wish you a wonderful learning journey onwards.
 
-### <span style="color:darkblue">Learning Tools</span>
+### <span style="color:#425C70">Learning Tools</span>
 
 ##### - Web Audio Resources
 
