@@ -2,7 +2,7 @@
 layout:     post
 title:      "Audio Sampling and the Delay Node"
 subtitle:   "Turning AudioKeys into a sampler and learning effects with the delay node"
-date:       2015-00-02 12:05:00
+date:       2015-09-02 12:05:00
 author:     "Tommy Roberson"
 header-img: "/img/norwaytunnel.jpg"
 ---
