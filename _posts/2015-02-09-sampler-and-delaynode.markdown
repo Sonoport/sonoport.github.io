@@ -11,7 +11,7 @@ Hello again from the Sonoport team! Last week we did a tutorial on the [AudioKey
 
 Below is what we will build today. Use the **a, j, g and p keys** respectively to play with the drum samples. 
 
-Click the button, then press the keys! 
+Click the button and press the keys!
 
 <div class="button-container">
   <button type="button" id="Play-Sampler-Button2" class="btn btn-info btn-lg button-color">Click for Sampler</button>
@@ -24,6 +24,8 @@ Click the button, then press the keys!
 ###Feedback Slider###
 
 <input id="Feedback" type="range" min="0" max="0.9" step="0.01" value="0.1"/>
+
+But never fear, with a little understanding of both JavaScript and signal flow, we will have ourselves a sweet sampler and a decadent delay. See what I did there? 
 
 First, let me explain how the webaudio API handles audio playback. When we want to play an audio file, we must *decode* that audio file. Our internet browser is only a piece of software that connects us to the world wide web, nothing more (well maybe a bit more...) and nothing less. Because the browser will not understand us when we say "Hey, Chrome, play this fat kick!", we need to speak to the browser in a language it can understand, the beautiful prose of binary. 
 
@@ -57,9 +59,14 @@ window.keyboard = new AudioKeys({
 });
 ```
 
-Above we have created a context variable inside of the window object and assigned it to a new instance of the `AudioContext()`. We then did the same with `window.keybaord`, only we assigned it to a new instance of `AudioKeys` assigning polyphony to 4.
+Above we have created a context variable inside of the window object and assigned it to a new instance of the `AudioContext()`. We then did the same with window.keybaord, only we assigned it to a new instance of `AudioKeys` assigning polyphony to 4.
 ___
+
 Stored on my Dropbox public folder are four files named Kick.wav, Tom.wav, Snare.wav and Hihat.wav. 
+
+<div class="button-container">
+  <button type="button" id="Play-Sampler-Button" class="btn btn-info btn-lg button-color">Click for Sampler</button>
+</div>
 
 Below is how JavaScript receives the Kick.wav file from the server. 
 
