@@ -9,7 +9,21 @@ header-img: "/img/norwaytunnel.jpg"
 
 Hello again from the Sonoport team! Last week we did a tutorial on the [AudioKeys library](https://github.com/kylestetz/AudioKeys), utilizing it to make a qwerty keyboard syntheszier. Now, let's turn that synthesizer into a sampler, and add a delay effect to it. While simple in theory, we will see that audio playback in web audio is a bit more involved than creating oscillators.
 
-But never fear, with a little understanding of both JavaScript and signal flow, we will have ourselves a sweet sampler and a decadent delay. See what I did there? 
+Below is what we will build today. Use the **a, j, g and p keys** respectively to play with the drum samples. 
+
+Click the button, then press the keys! 
+
+<div class="button-container">
+  <button type="button" id="Play-Sampler-Button2" class="btn btn-info btn-lg button-color">Click for Sampler</button>
+</div>
+
+###Delay Time Slider###
+
+<input id="DelayTime" type="range" min="0" max="2" step="0.01" value="0.1"/>
+
+###Feedback Slider###
+
+<input id="Feedback" type="range" min="0" max="0.9" step="0.01" value="0.1"/>
 
 First, let me explain how the webaudio API handles audio playback. When we want to play an audio file, we must *decode* that audio file. Our internet browser is only a piece of software that connects us to the world wide web, nothing more (well maybe a bit more...) and nothing less. Because the browser will not understand us when we say "Hey, Chrome, play this fat kick!", we need to speak to the browser in a language it can understand, the beautiful prose of binary. 
 
@@ -43,16 +57,9 @@ window.keyboard = new AudioKeys({
 });
 ```
 
-Above we have created a context variable inside of the window object and assigned it to a new instance of the `AudioContext()`. We then did the same with window.keybaord, only we assigned it to a new instance of `AudioKeys` assigning polyphony to 4.
+Above we have created a context variable inside of the window object and assigned it to a new instance of the `AudioContext()`. We then did the same with `window.keybaord`, only we assigned it to a new instance of `AudioKeys` assigning polyphony to 4.
 ___
-Now, for the fun part. Stored on my Dropbox public folder are four files named Kick.wav, Tom.wav, Snare.wav and Hihat.wav. 
-
-These are mapped to the **a, j, g and p keys** respectively. 
-
-<div class="button-container">
-  <button type="button" id="Play-Sampler-Button" class="btn btn-info btn-lg button-color">Click for Sampler</button>
-</div>
-
+Stored on my Dropbox public folder are four files named Kick.wav, Tom.wav, Snare.wav and Hihat.wav. 
 
 Below is how JavaScript receives the Kick.wav file from the server. 
 
@@ -290,24 +297,7 @@ var delayTwo = myDelay(0.3, 0.5);
 delayTwo.connect(context.destination);
 ```
 
-The code above will work when you run it on your machine, however for the purposes of this tutorial you can use the sliders below to play with the _delayTime.value and the feedback.gain.value.
-
-Move the sliders below and make sure to click the button!
-
-
-<div class="button-container">
-  <button type="button" id="Play-Sampler-Button2" class="btn btn-info btn-lg button-color">Click for Sampler</button>
-</div>
-
-###Delay Time Slider###
-
-<input id="DelayTime" type="range" min="0" max="2" step="0.01" value="0.1"/>
-
-###Feedback Slider###
-
-<input id="Feedback" type="range" min="0" max="0.9" step="0.01" value="0.1"/>
-
-
+The code above will work when you run it on your machine.
 
 <script src="js/audiokeys.js"></script>
 <script src="js/audiokeys_sampler.js"></script>
