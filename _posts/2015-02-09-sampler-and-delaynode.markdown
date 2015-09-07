@@ -7,16 +7,16 @@ author:     "Tommy Roberson"
 header-img: "/img/norwaytunnel.jpg"
 ---
 
-Hello again from the Sonoport team! Last week we did a tutorial on the [AudioKeys library](https://github.com/kylestetz/AudioKeys), utilizing it to make a qwerty keyboard syntheszier. Now, let's turn that synthesizer into a sampler, and add a delay effect to it. While simple in theory, we will see that audio playback in web audio is a bit more involved than creating oscillators.
+Hello again from the Sonoport team! Last week we did a tutorial on the [AudioKeys library](https://github.com/kylestetz/AudioKeys), utilizing it to make a qwerty keyboard synthesizer. Now, let's turn that synthesizer into a sampler, and add a delay effect to it. While simple in theory, we will see that audio playback in with the webaudio API is a bit more involved than creating oscillators.
 
-Below is what we will build today. Use the **a, j, g and p keys** respectively to play with the drum samples. If you are on a touch screen device such as an iOS or Android device, press the blue buttons below the "Click for Sampler" button.
+Below is what we will build today. Use the **a, j, g and p keys** respectively to play with the drum samples. If you are on a touch screen device such as an iOS or Android device, press the blue buttons below the "Sampler On" button. 
 
-Click the button and press the keys!
+Click the "Sampler On" button to turn on the sampler.
 
 <div id="buttonWrapper">
   <div class="master-button-div">
     <div class="button-container">
-      <button type="button" id="Play-Sampler-Button2" class="btn btn-info btn-lg button-color">Click for Sampler</button>
+      <button type="button" id="Play-Sampler-Button2" class="btn btn-info btn-lg button-color">Sampler On</button>
     </div>
     <hr style="height:0.02em; visibility:hidden;" />
 
@@ -30,13 +30,11 @@ Click the button and press the keys!
 </div>
 ###Delay Time Slider###
 
-<input id="DelayTime" type="range" min="0" max="2" step="0.01" value="0.1"/>
+<input id="DelayTime" type="range" class="track" min="0" max="2" step="0.01" value="0.1"/>
 
 ###Feedback Slider###
 
-<input id="Feedback" type="range" min="0" max="0.9" step="0.01" value="0.1"/>
-
-But never fear, with a little understanding of both JavaScript and signal flow, we will have ourselves a sweet sampler and a decadent delay. See what I did there? 
+<input id="Feedback" type="range" class="track" min="0" max="0.9" step="0.01" value="0.1"/>
 
 First, let me explain how the webaudio API handles audio playback. When we want to play an audio file, we must *decode* that audio file. Our internet browser is only a piece of software that connects us to the world wide web, nothing more (well maybe a bit more...) and nothing less. Because the browser will not understand us when we say "Hey, Chrome, play this fat kick!", we need to speak to the browser in a language it can understand, the beautiful prose of binary. 
 
@@ -63,14 +61,16 @@ So, enough talk, let's get to some code.
 First, let's setup our AudiContext as well as AudioKeys -
 
 ```
-window.context  = new AudioContext();
+window.AudioContext  = new AudioContext() || window.webkitAudioContext;
+window.context = new AudioContext();
 window.keyboard = new AudioKeys({
   polyphony: 4,
   rows: 1,
 });
 ```
+You may be wondering what hte window.webkitAudioContext(); is for, and why we need to include it. Using the browser prefix *webkit* allows us to access the webaudio API in Safari. Both Chrome and Firefox support the un-prefixed version. 
 
-Above we have created a context variable inside of the window object and assigned it to a new instance of the `AudioContext()`. We then did the same with window.keybaord, only we assigned it to a new instance of `AudioKeys` assigning polyphony to 4.
+So, we have created a context variable inside of the window object and assigned it to a new instance of the `AudioContext()`. We then did the same with window.keybaord, only we assigned it to a new instance of `AudioKeys` assigning polyphony to 4.
 ___
 
 Stored on my Dropbox public folder are four files named Kick.wav, Tom.wav, Snare.wav and Hihat.wav. 
@@ -105,9 +105,9 @@ getKick.send();
 
 I know, more craziness. 
 
-Here we use the .onload method and assign it to a function we want to run once we have received our audio data. This is where the web audio API will translate the 0s and 1s for us using `context.decodeAudioData`. This method takes two arguments, `getKick.response`, and a function that stores our newly decoded audio in a buffer inside of the browser. 
+Here we use the `.onload` method and assign it to a function we want to run once we have received our audio data. This is where the webaudio API will translate the 0s and 1s for us using `context.decodeAudioData`. This method takes two arguments, `getKick.response`, and a function that stores our newly decoded audio in a buffer inside of the browser. 
 
-This is how sample playback in web audio works - 
+This is how sample playback in webaudio works - 
 
 We fetch the file, then we decode it, then we store it in a buffer where we can access it using a special node called the __AudioBufferSourceNode__. It is created by calling `context.createBufferSource`. We will create a function that will assign a variable to a new AudioBufferSourceNode, then input our decoded audio buffer into this AudioBufferSourceNode.  
 
@@ -157,12 +157,11 @@ function myDelay(_delayTime, feedback) {
 
 As seen above, create a DelayNode by assigning the variable `var delay = context.createDelay();`. Then assign your `delay.delayTime` to the function argument _delayTime. 
 
-After that, create a feedback loop using a gain node, assigning the gain.value to the funciton argument named feedback. 
-Then, for a nice dub delay effect, add a BiquadFilterNode to the delay. 
+After that, create a feedback loop using a gain node, assigning the `gain.value` audioparam to the function argument named feedback. Then, for a nice dub delay effect, add a BiquadFilterNode to the delay. 
 
 So, creating the function myDelay gives us control over how many delays we want and let's us assign different parts of our audio signal to different delays. 
 
-For example, in the complete code below, There are two delay wet signals and one dry signal. The snare, tom and hihat, are sent to one delay and the Kick to it's own separate delay. 
+For example, in the __complete__ code below, There are two delay wet signals and one dry signal. The snare, tom and hihat, are sent to one delay and the Kick to it's own separate delay. 
 
 ```
 window.context  = new AudioContext();
@@ -315,7 +314,10 @@ var delayTwo = myDelay(0.3, 0.5);
 delayTwo.connect(context.destination);
 ```
 
-The code above will work when you run it on your machine.
+The code above should work when you run it on your machine. 
+___
+
+Thank you for following Sonoport's webaudio API tutorials! We will have plenty more for you to play with next month. For any feedback/questions please email me at *thomas.roberson@sonoport.com*. 
 
 <script src="js/hammer.min.js"></script>
 <script type="js/touch-emulator.js"></script>
