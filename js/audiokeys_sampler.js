@@ -1,26 +1,49 @@
-window.context  = new AudioContext();
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+var context = new AudioContext();
+
 window.keyboard = new AudioKeys({
   polyphony: 4,
 });
 
-var button1 = document.getElementById('Play-Sampler-Button');
-var button2 = document.getElementById('Play-Sampler-Button2')
+var button_1 = document.getElementById('Play-Sampler-Button');
+var button_2 = document.getElementById('Play-Sampler-Button2');
 
 var mute = true;
-button1.addEventListener('click', buttonClickHandler);
-button2.addEventListener('click', buttonClickHandler);
+
+button_1.addEventListener('click', buttonClickHandler);
+button_2.addEventListener('click', buttonClickHandler);
+
 
 function buttonClickHandler() {
   mute = !mute;
   if (!mute) {
-    button1.innerHTML = "Press to stop";
-    button2.innerHTML = "Press to stop";
+    button_1.innerHTML = "Press to stop";
+    button_2.innerHTML = "Press to stop";
   }
   else {
-    button1.innerHTML = "Click for Sampler";
-    button2.innerHTML = "Click for Sampler";
+    button_1.innerHTML = "Click for Sampler";
+    button_2.innerHTML = "Click for Sampler";
   }
 }
+
+function hammerTapHandler() {
+  mute = !mute;
+  if (!mute) {
+    button_1.innerHTML = "Press to stop";
+    button_2.innerHTML = "Press to stop";
+  }
+  else {
+    button_1.innerHTML = "Click for Sampler";
+    button_2.innerHTML = "Click for Sampler";
+  }
+}
+
+// var hammerButton_1 = new Hammer(button_1);
+// hammerButton_1.on('tap', hammerTapHandler);
+
+// var hammerButton_2 = new Hammer(button_2);
+// hammerButton_2.on('tap', hammerTapHandler);
 
 /* Get sounds from DropBox */
 
@@ -35,7 +58,7 @@ getKick.onload = function() {
   context.decodeAudioData(getKick.response, function(buffer) {
     kickBuffer = buffer;
   });
-}
+};
 
 getKick.send(); 
 
@@ -50,7 +73,7 @@ getSnare.onload = function() {
   context.decodeAudioData(getSnare.response, function(buffer) {
     snareBuffer = buffer;
   });
-}
+};
 
 getSnare.send(); 
 
@@ -65,7 +88,7 @@ getHiHat.onload = function() {
   context.decodeAudioData(getHiHat.response, function(buffer) {
     hiHatBuffer = buffer;
   });
-}
+};
 
 getHiHat.send(); 
 
@@ -80,7 +103,7 @@ getTom.onload = function() {
   context.decodeAudioData(getTom.response, function(buffer) {
     tomBuffer = buffer;
   });
-}
+};
 
 getTom.send(); 
 
@@ -139,6 +162,31 @@ keyboard.down( function(note) {
   }
 });
 
+function muteHandler() {
+  if (mute) return;
+}
+
+/* Touch Input */
+
+var pad_A = document.getElementById('pad_A');
+var pad_J = document.getElementById('pad_G');
+var pad_G = document.getElementById('pad_J');
+var pad_P = document.getElementById('pad_P');
+
+var hammerPad_A = new Hammer(pad_A);
+hammerPad_A.on('tap', playKick);
+
+var hammerPad_G = new Hammer(pad_G);
+hammerPad_G.on('tap', playSnare);
+
+var hammerPad_J = new Hammer(pad_J);
+hammerPad_J.on('tap', playTom);
+
+var hammerPad_P = new Hammer(pad_P);
+hammerPad_P.on('tap', playHiHat);
+
+/* Create Delay and delayTime/Feedback sliders*/
+
 var delayOne;
 var delayTwo;
 
@@ -176,7 +224,6 @@ function myDelay(/*_delayTime, feedback*/) {
   }); 
 
   return filter;
-
 }
 
 delayOne = myDelay();

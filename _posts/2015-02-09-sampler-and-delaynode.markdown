@@ -9,14 +9,25 @@ header-img: "/img/norwaytunnel.jpg"
 
 Hello again from the Sonoport team! Last week we did a tutorial on the [AudioKeys library](https://github.com/kylestetz/AudioKeys), utilizing it to make a qwerty keyboard syntheszier. Now, let's turn that synthesizer into a sampler, and add a delay effect to it. While simple in theory, we will see that audio playback in web audio is a bit more involved than creating oscillators.
 
-Below is what we will build today. Use the **a, j, g and p keys** respectively to play with the drum samples. 
+Below is what we will build today. Use the **a, j, g and p keys** respectively to play with the drum samples. If you are on a touch screen device such as an iOS or Android device, press the blue buttons below the "Click for Sampler" button.
 
 Click the button and press the keys!
 
-<div class="button-container">
-  <button type="button" id="Play-Sampler-Button2" class="btn btn-info btn-lg button-color">Click for Sampler</button>
-</div>
+<div id="buttonWrapper">
+  <div class="master-button-div">
+    <div class="button-container">
+      <button type="button" id="Play-Sampler-Button2" class="btn btn-info btn-lg button-color">Click for Sampler</button>
+    </div>
+    <hr style="height:0.02em; visibility:hidden;" />
 
+    <div class="pad">
+      <button type="button" id="pad_A" class="btn btn-info btn-lg button-color">A</button>
+      <button type="button" id="pad_G" class="btn btn-info btn-lg button-color">G</button>
+      <button type="button" id="pad_J" class="btn btn-info btn-lg button-color">J</button>
+      <button type="button" id="pad_P" class="btn btn-info btn-lg button-color">P</button>
+    </div>
+  </div>
+</div>
 ###Delay Time Slider###
 
 <input id="DelayTime" type="range" min="0" max="2" step="0.01" value="0.1"/>
@@ -306,6 +317,8 @@ delayTwo.connect(context.destination);
 
 The code above will work when you run it on your machine.
 
+<script src="js/hammer.min.js"></script>
+<script type="js/touch-emulator.js"></script>
 <script src="js/audiokeys.js"></script>
 <script src="js/audiokeys_sampler.js"></script>
 
