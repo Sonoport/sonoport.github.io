@@ -4,7 +4,7 @@ title:      "Learning Web Audio API"
 subtitle:   "Shedding some light on Web Audio API"
 date:       2015-06-08 12:00:00
 author:     "Aqilah Misuary"
-header-img: "/img/breaktime.jpg"
+header-img: "/img/breaktime-edit.jpg"
 ---
 
 Hey there! Thank you for visiting [Sonoport](http://sonoport.com/)'s tech blog! We hope that you had a wonderful weekend! This week we would like to shed some light on [Web Audio API](http://webaudio.github.io/web-audio-api/) by pointing out the different sources available on the net where you can learn more about it (there are so many!), different examples of its many uses and tips on learning it as a non-developer without any background in coding.
