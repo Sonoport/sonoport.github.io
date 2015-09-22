@@ -16,7 +16,8 @@ An example of that would be this: Hover your mouse below to trigger the animatio
 
 Are you ready? Let's recap on what is the HTML5 Canvas!
 
-</blockquote></h4>Added in HTML5, the HTML canvas element can be used to draw graphics via scripting in JavaScript. For example, it can be used to draw graphs, make photo compositions, create animations, or even do real-time video processing or rendering.</blockquote></h4>
+</h4>"Added in HTML5, the HTML canvas element can be used to draw graphics via scripting in JavaScript. For example, it can be used to draw graphs, make photo compositions, create animations, or even do real-time video processing or rendering."</h4> 
+[Source](http://diveintohtml5.info/canvas.html)
 
 So the `<canvas>` element is basically a rectangle on our page that lets us draw stuff on it using Javascript. In HTML, the `<canvas>` tag is mostly used to define the width & height. Drawings on the canvas itself are created using Javascript where we use drawing functions & methods which is also known as the [Canvas 2D API](http://www.w3.org/TR/2dcontext/). 
 
@@ -226,7 +227,7 @@ Now it's time for you try playing around with the code! See if you are able to m
 <p data-height="436" data-theme-id="0" data-slug-hash="vNKaGp" data-default-tab="result" data-user="aqilahmisuary" class='codepen'>See the Pen <a href='http://codepen.io/aqilahmisuary/pen/vNKaGp/'>Bouncing Ball (No Sound)</a> by Aqilah Misuary (<a href='http://codepen.io/aqilahmisuary'>@aqilahmisuary</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Click [here](http://sonoport.github.io/web-audio-and-canva-partI.html) for Part II!
+Click [here](http://sonoport.github.io/web-audio-and-canva-partII.html) for Part II!
 
 Thank you for following Sonoport's webaudio API tutorials! For any feedback/questions please email me at *aqilah@sonoport.com*.
 
