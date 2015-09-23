@@ -107,13 +107,13 @@ The fillStyle property sets or returns the color, gradient, or pattern used to f
 
 **<span>HTML canvas fill() Method</span>**
 
-The `fill()` method fills the current drawing (path).
+The `fill()` method fills the current drawing path.
 
 Another method that would be useful would also be `fillRect()`,
 
 **<span>HTML canvas fillRect() Method</span>**
 
-The `fillRect()` method draws a "filled" rectangle. The default color of the fill is black.
+The `fillRect()` method draws a filled rectangle. The default color of the fill is black.
 
 Once we have drawn the ball, it's time to create the `animate()` function!
 
@@ -173,13 +173,16 @@ So if you don't want to say goodbye to your ball, we must add these codes.
 ```js
 if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
 
-  ball.vy = -ball.vy; //IF the ball goes beyond the canvas height, move the ball the opposite direction.
+  // If the ball goes beyond the canvas height,
+  // move the ball the opposite direction.
+  ball.vy = -ball.vy;
 
 }
 if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
 
-  ball.vx = -ball.vx;/ /IF the ball goes beyond the canvas width, move the ball the opposite direction.
-
+  // If the ball goes beyond the canvas width,
+  // move the ball the opposite direction.
+  ball.vx = -ball.vx;
 }
 ```
 
