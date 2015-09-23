@@ -7,7 +7,9 @@
 }
 
 .button-color:hover {
-	background-color:#96C0C7; 
+	background-color:#96C0C7;
 }
 
-
+code {
+  font-size: 65%;
+}
