@@ -82,7 +82,7 @@ function getSample(url, cb) {
 }
 ```
 
-What we're doing is simply creating `XMLHttpRequest()` object by assigning it to a variable and using the methods `.open` and `.responseType`. The `.open` method takes the arguments "GET", your file URL, and true. We then use the method `.responseType` and assign it to the string "arraybuffer".
+What we're doing is simply creating `XMLHttpRequest()` object by assigning it to a variable and using the methods `open()` and `responseType()`. The `open()` method takes the arguments "GET", your file URL, and true. We then use the `responseType` property and assign it the string "arraybuffer".
 
 You can find more information [here](http://www.w3.org/TR/XMLHttpRequest/).
 

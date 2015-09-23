@@ -99,7 +99,7 @@ It creates an arc/curve (used to create circles, or parts of circles).
 
 **<span>HTML canvas closePath() Method</span>**
 
-The closePath() method creates a path from the current point back to the starting point.
+The `closePath()` method creates a path from the current point back to the starting point.
 
 **<span>HTML canvas fillStyle() Method</span>**
 
@@ -107,13 +107,13 @@ The fillStyle property sets or returns the color, gradient, or pattern used to f
 
 **<span>HTML canvas fill() Method</span>**
 
-The fill() method fills the current drawing (path).
+The `fill()` method fills the current drawing (path).
 
-Another method that would be useful would also be,
+Another method that would be useful would also be `fillRect()`,
 
 **<span>HTML canvas fillRect() Method</span>**
 
-The fillRect() method draws a "filled" rectangle. The default color of the fill is black.
+The `fillRect()` method draws a "filled" rectangle. The default color of the fill is black.
 
 Once we have drawn the ball, it's time to create the `animate()` function!
 
@@ -197,11 +197,11 @@ For the last line of code in our `animate()` function, we call the `window.reque
 var raf = window.requestAnimationFrame(animate);
 ```
 
-This [method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) tells the browser that we want to perform an animation and requests the browser to call the `animate()` function to update the animation before the repaint. We then store this inside the variable `raf`.
+This [requestAnimationFrame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) tells the browser that we want to perform an animation and requests the browser to call the `animate()` function to update the animation before the repaint. We then store this inside the variable `raf`.
 
 Why do we need to store it inside a variable?
 
-This is because in order to stop the animation, we have to call [this](https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelAnimationFrame).
+This is because in order to stop the animation, we have to call [cancelAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelAnimationFrame).
 
 ```js
 window.cancelAnimationFrame(raf);
@@ -228,7 +228,7 @@ Now it's time for you try playing around with the code! See if you are able to m
 <p data-height="436" data-theme-id="0" data-slug-hash="vNKaGp" data-default-tab="result" data-user="aqilahmisuary" class='codepen'>See the Pen <a href='http://codepen.io/aqilahmisuary/pen/vNKaGp/'>Bouncing Ball (No Sound)</a> by Aqilah Misuary (<a href='http://codepen.io/aqilahmisuary'>@aqilahmisuary</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Click [here](http://sonoport.github.io/web-audio-and-canva-partII.html) for Part II!
+[Click here](http://sonoport.github.io/web-audio-and-canva-partII.html) for Part II!
 
 Thank you for following Sonoport's webaudio API tutorials! For any feedback/questions please email me at *aqilah@sonoport.com*.
 
