@@ -4,7 +4,7 @@ title:      "Applying Web Audio API with the HTML5 Canvas Element"
 subtitle:   "Part I: First we draw the ball. Then we move the ball."
 date:       2015-09-23 12:05:00
 author:     "Aqilah Misuary"
-header-img: "/img/colourballz.jpg"
+header-img: "/img/ballpics1.jpg"
 ---
 Hey everyone welcome back to our web audio series! This week we're going to have some fun playing around with Web Audio API and the HTML5 Canvas element! Remember a few weeks back we did a tutorial on [visualising waveforms with Web Audio API](http://sonoport.github.io/visualising-waveforms-with-web-audio.html)? We've barely scratched the surface of how amazingly powerful the HTML5 Canvas can be. This [article](http://artatm.com/2012/01/23-truly-amazing-and-unbelievable-html5-canvas-and-javascript-experiments/) has several great examples. For this week, we're going to learn on how we can integrate Web Audio API with simple web animations created using the HTML5 Canvas element.
 

@@ -4,7 +4,7 @@ title:      "Applying Web Audio API with the HTML5 Canvas Element"
 subtitle:   "Part II: The ball makes sound!"
 date:       2015-09-23 12:05:00
 author:     "Aqilah Misuary"
-header-img: "/img/colourballz.jpg"
+header-img: "/img/ballpics1.jpg"
 ---
 
 Hey everyone welcome to Part II of Applying Web Audio API with the HTML5 Canvas Element tutorial! We're going to continue learning on how we can integrate Web Audio API with simple web animations created using the HTML5 Canvas element. If you missed Part I, click [here](http://sonoport.github.io/web-audio-and-canva-partI.html) to read it.
