@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Applying Web Audio API with the HTML5 Canvas Element"
-subtitle:   "Part I: First we draw the ball. Then we move the ball."
+subtitle:   "Part I: Drawing and animating a bouncing ball"
 date:       2015-09-23 12:05:00
 author:     "Aqilah Misuary"
 header-img: "/img/ballpics1.jpg"
