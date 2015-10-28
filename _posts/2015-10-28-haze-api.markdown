@@ -1,0 +1,312 @@
+---
+layout:     post
+title:      "Creating Sound Alerts with Web Audio and NEA APIs"
+subtitle:   "The hazier it gets, the higher pitched it would be."
+date:       2015-10-28 12:05:00
+author:     "Aqilah Misuary"
+header-img: "/img/cleanwing.jpg"
+---
+
+Hey everyone! Today we're going to try and sonify the haze that has been plaguing Singapore recently! If you're not sure what we're talking about, here's some [information](https://en.wikipedia.org/wiki/Southeast_Asian_haze) on it. What we're going to do today is to use the [National Environmental Agency (NEA)'s API](https://www.nea.gov.sg/api) to gather data on the haze and use it to create sound. 
+
+Click the button to hear the haze alarm.
+
+<button type="button" id="buttonPlay" class="btn btn-info btn-lg button-color" onclick="play() ">Play</button>
+<button type="button" id="buttonStop" class="btn btn-info btn-lg button-color" onclick="stop() ">Stop</button>
+<table id="demo"></table>
+
+As you can see from the table above, we are collecting the [PSI](http://www.nea.gov.sg/anti-pollution-radiation-protection/air-pollution-control/psi/psi) Pollutant Standards Index)reading and the air quality level description.
+
+I would also like to thank [IMBA Interactive](http://www.imbainteractive.com/singlish/) for their [Singlish](https://en.wikipedia.org/wiki/Singlish_vocabulary) sound packs which were wonderful and I had a lot of fun listening through all the sounds. You can download the sound packs [here](http://www.imbainteractive.com/singlish/). 
+
+For those who wants to know the weather forecast plus the Haze alert:
+
+<button type="button" id="weatherButton" class="btn btn-info btn-xs button-color" onclick="loadXMLDoc2()">Weather</button>
+
+<div id="weather"></div>
+
+###Haze Levels###
+
+Click the buttons to hear the minimum PSI for each range.
+
+<p><button type="button" id="button1" class="btn btn-info btn-xs button-color" onclick="goodPSIglobal() ">Good</button>
+<button type="button" id="button2" class="btn btn-info btn-xs button-color" onclick="moderatePSIglobal()">Moderate</button>
+<button type="button" id="button3" class="btn btn-info btn-xs button-color" onclick="unhealthyPSIglobal()">Unhealthy</button>
+<button type="button" id="button4" class="btn btn-info btn-xs button-color" onclick="badPSIglobal()">Very Unhealthy</button>
+<button type="button" id="button5" class="btn btn-info btn-xs button-color" onclick="verybadPSIglobal()">Hazardous</button></p>
+
+###Where are the sounds coming from?
+
+What we're doing now is simply letting different pre-determined frequency sounds define the PSI level. As the PSI level increases, the frequency pitch changes. Now that's just a way for us to differenciate the PSI levels through the use of [empathetic sounds](http://filmsound.org/chion/empath.htm). If we were to correlate the frequencies directly to the PSI value it would sound something like this.
+
+Move the slider to hear the PSI values
+
+<input id="hazeslider" type="range" class="track" min="0" max="1000" step="1" value="0.1"/>
+
+<p id="showValue"></p>
+
+Now I think that sounds really bland, why don't we use those PSI values to make some music? Click the buttons to hear the PSI values for the month (Except for October which I stopped on the 28th).
+
+<button type="button" onclick="august()">August</button>
+<button type="button" onclick="september()">September</button>
+<button type="button" onclick="october()">October</button>
+
+It's very interesting to hear because October is the most 'melodic'.  This is because the PSI level for the month of October was the [worst on record](http://www.straitstimes.com/asia/haze-crisis-set-to-be-one-of-the-worst-on-record) so far. What I did was to search [historical PSI readings](http://www.haze.gov.sg/haze-updates/historical-psi-readings/year/2015/month/10/day/28) and read PSI data from there. I mostly choose the 12pm readings.
+
+That is just one of the few fun ways you can use the PSI data. What if you want the live PSI data from NEA? Well it's time to use the NEA API!
+
+###How do I access the NEA API?
+
+Well firstly you have to register for API access [here](https://www.nea.gov.sg/api). Fill in the boxes on the bottom section and you will receive a notification email from NEA with links to the dataset.
+
+<h4><blockquote>HTTP stands for <b>HyperText Transfer Protocol</b>. We use HTTP to take information from web pages anywhere on the internet. These web pages come from other computers on the internet called <b>servers</b>. When we make an HTTP <b>request</b>, it will find the servers that knows how to fullfill that request and sends back a response.</h4></blockquote>
+
+For now I will explain to you how APIs work. 
+
+An API (Application Programming Interface) specifies a way on how a program can interact with an application. 
+
+###1) Making A Request
+
+```
+function loadXMLDoc() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            myFunction(xhr);
+
+        }
+    }
+    xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=1234567890", true);
+    xhr.send();
+}
+```
+For this instance, our `xhr` variable stands for <b>XML HTTP Request</b>. The number of HTTP methods are just four so it's quite easy to remember. 
+
+<b>GET</b>: Retrieves information from the specified source.
+
+<b>POST</b>: Sends information to the specified source.
+
+<b>PUT</b>: Updates existing information of the specified source.
+
+<b>DELETE</b>: Removes existing information from the specified source.
+
+Our HTTP request is mainly made up of three parts.
+
+1) The <b>request line</b> tells the server what kind of request is being sent and what kind of resource it's looking for.
+
+2) The <b>header</b>, which sends additional information to the server.
+
+3) The <b>body</b>, which can be both empty or contain data.
+
+###2)  Authentication & API Keys
+
+Most APIs needs an <b>API Key</b> as it helps the API provider keep track of how their data is being used and prevent unathorized activities. API keys are usually long alphanumeric strings. 
+
+###3)  HTTP Status Codes
+
+Once you have successfully done a request to a server, it results in a <b>response</b>. These responses usually contain a three-digit status code. You can see the list of codes [here](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). The most famous is probably the "404" which means "file not found", you asked for a resource or web page that doesn't exist.
+
+The HTTP response structure is similar to the HTTP request.
+
+1) A response line which includes the HTTP status code.
+
+2) A header that includes further information about the server.
+
+3) A body which contains the text of the response.
+
+###4) Parsing XML
+
+Parsing XML gives me a headache but I still do it the old-school way.
+
+```
+var x = xmlDoc.getElementsByTagName("forecast")[0].childNodes[0].nodeValue;
+
+```
+
+To understand what is happening on that line of code, I suggest you go through this [DOM tutorial](http://www.w3schools.com/xml/dom_intro.asp). Basically XML stands for E<b>x</b>tensible <b>M</b>arkup <b>L</b>anguage and it is very similar to HTML. The main difference is that it allows you to use tags that you create. There are many Javascript libraries that will allow you to parse XML documents, a few would be:
+
+1) [JKL.ParseXML](http://www.kawa.net/works/js/jkl/parsexml-e.html)
+
+2) [sax js](https://github.com/isaacs/sax-js)
+
+3) [Marknote](https://code.google.com/p/marknote/)
+
+It is a good practice to do it manually when you are still learning, however once you've understood the concept, it's much easier to use libraries due to it's tedious process.  
+
+A good thing to note is that NEA supplies their data in XML format.
+
+Another format that you would come across when you use APIs would be JSON. JSON stands for <b>J</b>ava <b>S</b>cript <b>O</b>bject <b>N</b>otation, which is an alternative to XML. It looks like this:
+
+```
+{"widget": {
+    "debug": "on",
+    "window": {
+        "title": "Sample Konfabulator Widget",
+        "name": "main_window",
+        "width": 500,
+        "height": 500
+    },
+    "image": { 
+        "src": "Images/Sun.png",
+        "name": "sun1",
+        "hOffset": 250,
+        "vOffset": 250,
+        "alignment": "center"
+    },
+    "text": {
+        "data": "Click Here",
+        "size": 36,
+        "style": "bold",
+        "name": "text1",
+        "hOffset": 250,
+        "vOffset": 100,
+        "alignment": "center",
+        "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
+    }
+}}    
+```
+
+Compared to the same data being presented in XML format.
+
+```
+<widget>
+    <debug>on</debug>
+    <window title="Sample Konfabulator Widget">
+        <name>main_window</name>
+        <width>500</width>
+        <height>500</height>
+    </window>
+    <image src="Images/Sun.png" name="sun1">
+        <hOffset>250</hOffset>
+        <vOffset>250</vOffset>
+        <alignment>center</alignment>
+    </image>
+    <text data="Click Here" size="36" style="bold">
+        <name>text1</name>
+        <hOffset>250</hOffset>
+        <vOffset>100</vOffset>
+        <alignment>center</alignment>
+        <onMouseUp>
+            sun1.opacity = (sun1.opacity / 100) * 90;
+        </onMouseUp>
+    </text>
+</widget>
+```
+Taken from [json.org](http://json.org/example.html).
+
+So...that's it! Congratulations you've covered the absolute basics of how to use APIs! Now lets get on with making sounds with it!
+
+```
+var psiVal = xmlDoc.getElementsByTagName("reading")[24].attributes.getNamedItem("value").nodeValue;
+```
+
+Now you have your PSI value, what do we do with it?
+Of course we could try creating an oscillator and relating its frequency to it.
+
+```
+//Define our variables
+var context = new AudioContext();
+var oscillator = context.createOscillator();
+
+//Oscillator settings
+oscillator.type = 'sine';
+oscillator.frequency.value = psiVal; //psiVal is defined by the data taken from NEA
+
+//Connection!
+oscillator.connect(context.destination);
+
+//Oscillator start and stop
+oscillator.start(context.currentTime);
+oscillator.stop(context.currentTime + 1); //sound stops after 1 second
+```
+
+Or if you prefer to manually collect the PSI data, you could even make short melodies with it.
+
+Over here I'm creating a function to play frequencies directly related to PSI values. Like I've mentioned previously, this data can be taken from NEA's historical PSI data.
+
+```
+var audioContext = new AudioContext();
+
+//Create a function to play the PSI values
+function playPSI(delay, psi, duration) {
+
+    //Define our variables
+    var startTime = audioContext.currentTime + delay;
+    var endTime = startTime + duration;
+    var oscillatorPSI = audioContext.createOscillator();
+    var gain = audioContext.createGain();
+```
+
+On the above we are using the `delay` value to schedule the start times of each sound and the `duration` value to define how long do we want each sound to be.
+
+```
+    //Connections
+    oscillatorPSI.connect(gain);
+    gain.connect(audioContext.destination);
+
+    //Gain settings
+    gain.gain.value = 0.2;
+    gain.gain.setValueAtTime(oscGain1.gain.value, context.currentTime);
+    gain.gain.linearRampToValueAtTime(0.1, context.currentTime + 0.1);
+    gain.gain.linearRampToValueAtTime(0, context.currentTime + 1);
+
+    //Oscillator start and stop
+    oscillatorPSI.start(startTime);
+    oscillatorPSI.stop(endTime);
+    oscillatorPSI.frequency.value = psi * 10; 
+
+    /*
+    We multiply the PSI by 10 so that we can hear it on a higher frequency, or else the frequency relating to the PSI would be too low and we can't really hear it properly
+    */
+}
+```
+
+Once you've created the playPSI() function, you can use it like this.
+
+```
+    playPSI(0, 57, 0.2); //Day 1
+    playPSI(0.2, 48, 0.2); //Day 2
+    playPSI(0.4, 33, 0.2); // Day 3
+    playPSI(0.6, 42, 0.2); // Day 4
+    playPSI(0.8, 53, 0.2); // Day 5
+    playPSI(1.2, 52, 0.2); // Day 6
+    playPSI(1.4, 54, 0.2); // Day 7
+    playPSI(1.6, 54, 0.2); // Day 8
+    playPSI(1.8, 51, 0.2); // Day 9
+    playPSI(2.0, 57, 0.2); // Day 10
+```
+
+Here is an example.
+
+<p data-height="203" data-theme-id="0" data-slug-hash="LpmLRw" data-default-tab="result" data-user="aqilahmisuary" class='codepen'>See the Pen <a href='http://codepen.io/aqilahmisuary/pen/LpmLRw/'>Sequence of Notes</a> by Aqilah Misuary (<a href='http://codepen.io/aqilahmisuary'>@aqilahmisuary</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+Remember you can also take a look at the rest of the codes [here](https://github.com/Sonoport/sonoport.github.io/tree/master/_posts). My codes are far from perfect so do fork it by all means if you feel there's a better way to code it!
+
+Thank you for following Sonoport's webaudio API tutorials! For any feedback/questions please email me at *aqilah@sonoport.com*.
+
+<script src="js/hazehack.js"></script>
+<script src="js/psiTune.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="css/hazeapi.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
