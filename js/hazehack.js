@@ -44,25 +44,33 @@ function stop() {
 function loadXMLDoc() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            myFunction(xhr);
+    //xhr.setRequestHeader("Content-Type","text/xml");
+    xhr.onload = function() {
+        
 
-        }
-    }
+            if(xhr.status === 200) {
+                myFunction(xhr);
+            }
+
+        
+    };
     //xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
     xhr.send();
 }
 
 function loadXMLDoc2() {
     var xhr2 = new XMLHttpRequest();
+    xhr2.open("GET", "http://www.nea.gov.sg/api/WebAPI/?dataset=12hrs_forecast&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
     xhr2.onreadystatechange = function() {
-        if (xhr2.readyState == 4 && xhr2.status == 200) {
+        if (xhr2.readyState === 4) {
+
+            if(xhr2.status === 200){
             myFunction2(xhr2);
+            }
 
         }
     }
-    xhr2.open("GET", "http://www.nea.gov.sg/api/WebAPI/?dataset=12hrs_forecast&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
+    //xhr2.open("GET", "http://www.nea.gov.sg/api/WebAPI/?dataset=12hrs_forecast&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
     xhr2.send();
 }
 
@@ -182,7 +190,7 @@ function myFunction(xml) {
         var q;
         if (psiVal <= 50) {
             q = "Good";
-            
+            goodPSIglobal();
         } else if (psiVal <= 100) {
             q = "Moderate";
             moderatePSIglobal();
