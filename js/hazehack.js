@@ -1,3 +1,36 @@
+//AUDIO VARIABLES
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
+var noiseGain = context.createGain();
+var sampleGain = context.createGain();
+var oscillator = context.createOscillator();
+var oscillator2 = context.createOscillator();
+var delay = context.createDelay()
+var leftDelay = context.createDelay()
+var rightDelay = context.createDelay()
+var feedback = context.createGain()
+var merger = context.createChannelMerger(2)
+
+var url = "https://dl.dropboxusercontent.com/u/30075450/Huatah.wav";
+var source;
+var myAudioBuffer;
+
+var url2 = "https://dl.dropboxusercontent.com/u/30075450/Buay.wav";
+var source2;
+var myAudioBuffer2;
+
+var url3 = "https://dl.dropboxusercontent.com/u/30075450/Aiyo.wav";
+var source3;
+var myAudioBuffer3;
+
+var url4 = "https://dl.dropboxusercontent.com/u/30075450/Wahlaueh.wav";
+var source4;
+var myAudioBuffer4;
+
+var url5 = "https://dl.dropboxusercontent.com/u/30075450/Jialat.wav";
+var source5;
+var myAudioBuffer5;
+
 function play() {;
     loadXMLDoc();
 };
@@ -10,13 +43,14 @@ function stop() {
 
 function loadXMLDoc() {
     var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             myFunction(xhr);
 
         }
     }
-    xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
+    //xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
     xhr.send();
 }
 
@@ -185,38 +219,7 @@ function myFunction(xml) {
     document.getElementById("demo").innerHTML = table;
 }
 
-//AUDIO
 
-var context = new AudioContext();
-var noiseGain = context.createGain();
-var sampleGain = context.createGain();
-var oscillator = context.createOscillator();
-var oscillator2 = context.createOscillator();
-var delay = context.createDelay()
-var leftDelay = context.createDelay()
-var rightDelay = context.createDelay()
-var feedback = context.createGain()
-var merger = context.createChannelMerger(2)
-
-var url = "https://dl.dropboxusercontent.com/u/30075450/Huatah.wav";
-var source;
-var myAudioBuffer;
-
-var url2 = "https://dl.dropboxusercontent.com/u/30075450/Buay.wav";
-var source2;
-var myAudioBuffer2;
-
-var url3 = "https://dl.dropboxusercontent.com/u/30075450/Aiyo.wav";
-var source3;
-var myAudioBuffer3;
-
-var url4 = "https://dl.dropboxusercontent.com/u/30075450/Wahlaueh.wav";
-var source4;
-var myAudioBuffer4;
-
-var url5 = "https://dl.dropboxusercontent.com/u/30075450/Jialat.wav";
-var source5;
-var myAudioBuffer5;
 
 function playSound() {
 

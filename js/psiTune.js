@@ -1,3 +1,5 @@
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
 var audioContext = new AudioContext();
 var delay = audioContext.createDelay();
 var leftDelay = audioContext.createDelay();
