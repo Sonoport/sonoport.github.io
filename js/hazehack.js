@@ -11,23 +11,23 @@ var rightDelay = context.createDelay()
 var feedback = context.createGain()
 var merger = context.createChannelMerger(2)
 
-var url = "https://dl.dropboxusercontent.com/u/30075450/Huatah.wav";
+var url = "https://dl.dropboxusercontent.com/u/30075450/Huatah.mp3";
 var source;
 var myAudioBuffer;
 
-var url2 = "https://dl.dropboxusercontent.com/u/30075450/Buay.wav";
+var url2 = "https://dl.dropboxusercontent.com/u/30075450/Buay.mp3";
 var source2;
 var myAudioBuffer2;
 
-var url3 = "https://dl.dropboxusercontent.com/u/30075450/Aiyo.wav";
+var url3 = "https://dl.dropboxusercontent.com/u/30075450/Aiyo.mp3";
 var source3;
 var myAudioBuffer3;
 
-var url4 = "https://dl.dropboxusercontent.com/u/30075450/Wahlaueh.wav";
+var url4 = "https://dl.dropboxusercontent.com/u/30075450/Wahlaueh.mp3";
 var source4;
 var myAudioBuffer4;
 
-var url5 = "https://dl.dropboxusercontent.com/u/30075450/Jialat.wav";
+var url5 = "https://dl.dropboxusercontent.com/u/30075450/Jialat.mp3";
 var source5;
 var myAudioBuffer5;
 
@@ -236,7 +236,7 @@ function playSound() {
 }
 
 //GET HUAT AH SOUND FROM DROPBOX
-function requestHuat() {
+function requestHuat(callback) {
 var request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.responseType = 'arraybuffer';
@@ -245,7 +245,8 @@ var request = new XMLHttpRequest();
         context.decodeAudioData(request.response, function(buffer) {
         myAudioBuffer = buffer;
         console.log(myAudioBuffer);
-        source.buffer = myAudioBuffer;
+        
+        callback(myAudioBuffer);
         });
 
     };
@@ -381,10 +382,14 @@ function goodPSIglobal() {
     oscillator.frequency.value = 523.25;
     oscillator2.frequency.value = 329.63;
 
-    requestHuat();
-    source = context.createBufferSource();
-    source.connect(sampleGain);
-    source.start();
+    requestHuat(function (buffer){ 
+        source = context.createBufferSource();
+        source.buffer = buffer;
+        source.connect(sampleGain);
+        source.start();
+
+    });
+
     
     time();
     alert("PSI Level is less than 50! Smell the fresh air!");
