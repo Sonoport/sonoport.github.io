@@ -41,7 +41,7 @@ Click the buttons to hear the minimum PSI for each range.
 
 ###Where are the sounds coming from?
 
-What we're doing now is simply letting different pre-determined frequency sounds define the PSI level. As the PSI level increases, the frequency pitch changes. Now that's just a way for us to differenciate the PSI levels through the use of [empathetic sounds](http://filmsound.org/chion/empath.htm). If we were to correlate the frequencies directly to the PSI value it would sound something like this.
+What we're doing now is simply letting different pre-determined frequency sounds define the PSI level. As the PSI level increases, the frequency pitch changes. Now that's just a way for us to differentiate the PSI levels through the use of [empathetic sounds](http://filmsound.org/chion/empath.htm). If we were to correlate the frequencies directly to the PSI value it would sound something like this.
 
 Move the slider to hear the PSI values
 
@@ -104,7 +104,7 @@ Our HTTP request is mainly made up of three parts.
 
 ###2)  Authentication & API Keys
 
-Most APIs needs an <b>API Key</b> as it helps the API provider keep track of how their data is being used and prevent unathorized activities. API keys are usually long alphanumeric strings.
+Most APIs needs an <b>API Key</b> as it helps the API provider keep track of how their data is being used and prevent unauthorized activities. API keys are usually long alphanumeric strings.
 
 ###3)  HTTP Status Codes
 
@@ -287,7 +287,7 @@ Here is an example.
 
 Remember you can also take a look at the rest of the code [here](https://github.com/Sonoport/sonoport.github.io/tree/master/_posts). My code are far from perfect so do fork it by all means if you feel there's a better way to code it!
 
-Thank you for following Sonoport's webaudio API tutorials! For any feedback/questions please email me at *aqilah@sonoport.com*.
+Thank you for following Sonoport's WebAudio API tutorials! For any feedback/questions please email me at *aqilah@sonoport.com*.
 
 <script src="js/hazehack.js"></script>
 <script src="js/psiTune.js"></script>
