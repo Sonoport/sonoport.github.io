@@ -6,10 +6,10 @@ date:       2015-10-28 12:05:00
 author:     "Aqilah Misuary"
 header-img: "/img/cleanwing.jpg"
 ---
- 
+
 Note: This works best with Google Chrome or Firefox.
 
-Hey everyone! Today we're going to try and sonify the haze that has been plaguing Singapore recently! If you're not sure what we're talking about, here's some [information](https://en.wikipedia.org/wiki/Southeast_Asian_haze) on it. What we're going to do today is to use the [National Environmental Agency (NEA)'s API](https://www.nea.gov.sg/api) to gather data on the haze and use it to create sound. 
+Hey everyone! Today we're going to try and sonify the haze that has been plaguing Singapore recently! If you're not sure what we're talking about, here's some [information](https://en.wikipedia.org/wiki/Southeast_Asian_haze) on it. What we're going to do today is to use the [National Environmental Agency (NEA)'s API](https://www.nea.gov.sg/api) to gather data on the haze and use it to create sound.
 
 <p id="nea" >There will be scheduled maintenance of NEA’s Datasets via APIs from 30 October 2015 (Friday) 7:00pm to 01 November 2015 (Sunday) 8:00am. During that period our live example of the haze alarm might be disrupted however all the other examples are still available so please feel free to browse.</p>
 
@@ -21,7 +21,7 @@ Click the button to hear the haze alarm.
 
 As you can see from the table above, we are collecting the [PSI](http://www.nea.gov.sg/anti-pollution-radiation-protection/air-pollution-control/psi/psi) Pollutant Standards Index)reading and the air quality level description.
 
-I would also like to thank [IMBA Interactive](http://www.imbainteractive.com/singlish/) for their [Singlish](https://en.wikipedia.org/wiki/Singlish_vocabulary) sound packs which were wonderful and I had a lot of fun listening through all the sounds. You can download the sound packs [here](http://www.imbainteractive.com/singlish/). 
+I would also like to thank [IMBA Interactive](http://www.imbainteractive.com/singlish/) for their [Singlish](https://en.wikipedia.org/wiki/Singlish_vocabulary) sound packs which were wonderful and I had a lot of fun listening through all the sounds. You can download the sound packs [here](http://www.imbainteractive.com/singlish/).
 
 For those who wants to know the weather forecast plus the Haze alert:
 
@@ -65,9 +65,9 @@ Well firstly you have to register for API access [here](https://www.nea.gov.sg/a
 
 <h4><blockquote>HTTP stands for <b>HyperText Transfer Protocol</b>. We use HTTP to take information from web pages anywhere on the internet. These web pages come from other computers on the internet called <b>servers</b>. When we make an HTTP <b>request</b>, it will find the servers that knows how to fullfill that request and sends back a response.</h4></blockquote>
 
-For now I will explain to you how APIs work. 
+For now I will explain to you how APIs work.
 
-An API (Application Programming Interface) specifies a way on how a program can interact with an application. 
+An API (Application Programming Interface) specifies a way on how a program can interact with an application.
 
 ###1) Making A Request
 
@@ -84,7 +84,7 @@ function loadXMLDoc() {
     xhr.send();
 }
 ```
-For this instance, our `xhr` variable stands for <b>XML HTTP Request</b>. The number of HTTP methods are just four so it's quite easy to remember. 
+For this instance, our `xhr` variable stands for <b>XML HTTP Request</b>. The number of HTTP methods are just four so it's quite easy to remember.
 
 <b>GET</b>: Retrieves information from the specified source.
 
@@ -104,7 +104,7 @@ Our HTTP request is mainly made up of three parts.
 
 ###2)  Authentication & API Keys
 
-Most APIs needs an <b>API Key</b> as it helps the API provider keep track of how their data is being used and prevent unathorized activities. API keys are usually long alphanumeric strings. 
+Most APIs needs an <b>API Key</b> as it helps the API provider keep track of how their data is being used and prevent unathorized activities. API keys are usually long alphanumeric strings.
 
 ###3)  HTTP Status Codes
 
@@ -150,7 +150,7 @@ Another format that you would come across when you use APIs would be JSON. JSON 
         "width": 500,
         "height": 500
     },
-    "image": { 
+    "image": {
         "src": "Images/Sun.png",
         "name": "sun1",
         "hOffset": 250,
@@ -257,7 +257,7 @@ On the above we are using the `delay` value to schedule the start times of each 
     //Oscillator start and stop
     oscillatorPSI.start(startTime);
     oscillatorPSI.stop(endTime);
-    oscillatorPSI.frequency.value = psi * 10; 
+    oscillatorPSI.frequency.value = psi * 10;
 
     /*
     We multiply the PSI by 10 so that we can hear it on a higher frequency, or else the frequency relating to the PSI would be too low and we can't really hear it properly
@@ -285,7 +285,7 @@ Here is an example.
 <p data-height="203" data-theme-id="0" data-slug-hash="LpmLRw" data-default-tab="result" data-user="aqilahmisuary" class='codepen'>See the Pen <a href='http://codepen.io/aqilahmisuary/pen/LpmLRw/'>Sequence of Notes</a> by Aqilah Misuary (<a href='http://codepen.io/aqilahmisuary'>@aqilahmisuary</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Remember you can also take a look at the rest of the codes [here](https://github.com/Sonoport/sonoport.github.io/tree/master/_posts). My codes are far from perfect so do fork it by all means if you feel there's a better way to code it!
+Remember you can also take a look at the rest of the code [here](https://github.com/Sonoport/sonoport.github.io/tree/master/_posts). My code are far from perfect so do fork it by all means if you feel there's a better way to code it!
 
 Thank you for following Sonoport's webaudio API tutorials! For any feedback/questions please email me at *aqilah@sonoport.com*.
 
@@ -293,24 +293,3 @@ Thank you for following Sonoport's webaudio API tutorials! For any feedback/ques
 <script src="js/psiTune.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link rel="stylesheet" href="css/hazeapi.css">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
