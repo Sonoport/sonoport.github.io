@@ -11,8 +11,6 @@ Note: This works best with Google Chrome or Firefox.
 
 Hey everyone! Today we're going to try and sonify the haze that has been plaguing Singapore recently! If you're not sure what we're talking about, here's some [information](https://en.wikipedia.org/wiki/Southeast_Asian_haze) on it. What we're going to do today is to use the [National Environmental Agency (NEA)'s API](https://www.nea.gov.sg/api) to gather data on the haze and use it to create sound.
 
-<p id="nea" >There will be scheduled maintenance of NEA’s Datasets via APIs from 30 October 2015 (Friday) 7:00pm to 01 November 2015 (Sunday) 8:00am. During that period our live example of the haze alarm might be disrupted however all the other examples are still available so please feel free to browse.</p>
-
 Click the button to hear the haze alarm.
 
 <button type="button" id="buttonPlay" class="btn btn-info btn-lg button-color" onclick="play() ">Play</button>
