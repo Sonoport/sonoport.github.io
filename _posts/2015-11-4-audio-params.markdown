@@ -4,7 +4,7 @@ title:      "Understanding AudioParams"
 subtitle:   "Precision control of web audio nodes."
 date:       2015-11-4 12:05:00
 author:     "Tommy Roberson"
-header-img: "/img/mixer.jpg"
+header-img: "/img/mixer.png"
 ---
 
 Hello everyone from the Sonoport team. Today I would like to go into detail about AudioParams, which are a super neat and important part of web audio. We have seen them before, such as when we set the frequency value of a filter or the amplitude of a GainNode. All AudioParams have methods that we can use to manipulate their values. Using these methods, we can set envelopes and create more finite control structures of our audio signal using automation.
