@@ -42,7 +42,7 @@ getKick.onload = function() {
   });
 };
 
-getKick.send(); 
+getKick.send();
 
 /* Snare */
 var snareBuffer;
@@ -57,7 +57,7 @@ getSnare.onload = function() {
   });
 };
 
-getSnare.send(); 
+getSnare.send();
 
 /* HiHat */
 var hiHatBuffer;
@@ -72,7 +72,7 @@ getHiHat.onload = function() {
   });
 };
 
-getHiHat.send(); 
+getHiHat.send();
 
 /* Tom */
 var tomBuffer;
@@ -87,7 +87,7 @@ getTom.onload = function() {
   });
 };
 
-getTom.send(); 
+getTom.send();
 
 /* Create sound playback functions */
 
@@ -127,7 +127,7 @@ function playTom() {
 /* Play sounds using AudioKeys */
 
 keyboard.down( function(note) {
-  if (mute) return; 
+  if (mute) return;
 
   if (note.keyCode === 65) {
     playKick();
@@ -167,8 +167,8 @@ function myDelay(/*_delayTime, feedback*/) {
   var delay = context.createDelay();
   delay.delayTime.value = 0;
 
-  var _feedback = context.createGain();
-  _feedback.gain.value = 0;
+  var feedback = context.createGain();
+  feedback.gain.value = 0;
 
   var filter = context.createBiquadFilter();
   filter.frequency.value = 4000;
@@ -176,9 +176,9 @@ function myDelay(/*_delayTime, feedback*/) {
 
   filter.connect(delay);
 
-  delay.connect(_feedback);
+  delay.connect(feedback);
 
-  _feedback.connect(filter);
+  feedback.connect(filter);
 
   delay.connect(context.destination);
 
@@ -189,10 +189,10 @@ function myDelay(/*_delayTime, feedback*/) {
   });
 
   document.getElementById('Feedback').addEventListener('input', function() {
-    _feedback.gain.value = this.value;
+    feedback.gain.value = this.value;
 
     console.log('Feedback', this.value);
-  }); 
+  });
 
   return filter;
 }
@@ -205,13 +205,3 @@ delayTwo = myDelay();
 
 // // var delayTwo = myDelay(0.3, 0.5);
 // delayTwo.connect(context.destination);
-
-
-
-
-
-
-
-
-
-
