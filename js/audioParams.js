@@ -17,7 +17,7 @@ function makeOsc() {
   osc = audioContext.createOscillator();
   osc.type = 'square';
   osc.frequency.value = 440;
-  
+
   return osc;
 }
 
@@ -32,14 +32,14 @@ function playLinearRamp() {
   osc.connect(gain);
 
   gain.connect(globalGain);
-  
+
   // Set value first
   gain.gain.setValueAtTime(0.01, currentTime);
 
   // Attack
   gain.gain.linearRampToValueAtTime(0.9, currentTime + 2);
 
-  // Decay 
+  // Decay
   gain.gain.linearRampToValueAtTime(0.1, currentTime + 5);
 
   osc.start();

@@ -159,4 +159,4 @@ Try the buttons to hear how each method sounds different, and see if you can fol
 
 <iframe width="100%" height="300" src="//jsfiddle.net/thomasroberson1/6rfg7d16/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<script src="js/AudioParams.js"></script>
+<script src="js/audioParams.js"></script>
