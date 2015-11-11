@@ -92,14 +92,14 @@ function stop() {
 
 function loadXMLDoc() {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
+  xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI/?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
   //xhr.setRequestHeader("Content-Type","text/xml");
   xhr.onload = function() {
     if(xhr.status === 200) {
       parseXMLData(xhr);
     }
   };
-  //xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
+  //xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI/?dataset=psi_update&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
   xhr.send();
 }
 

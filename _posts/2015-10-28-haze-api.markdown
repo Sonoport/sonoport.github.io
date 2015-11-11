@@ -78,7 +78,7 @@ function loadXMLDoc() {
 
         }
     }
-    xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=1234567890", true);
+    xhr.open("GET", "http://www.nea.gov.sg/api/WebAPI/?dataset=psi_update&keyref=1234567890", true);
     xhr.send();
 }
 ```
