@@ -2,7 +2,7 @@
 layout:     post
 title:      "Understanding AudioParams"
 subtitle:   "Precision control of web audio nodes."
-date:       2015-11-4 12:05:00
+date:       2015-11-09 12:05:00
 author:     "Tommy Roberson"
 header-img: "/img/mixer.png"
 ---
