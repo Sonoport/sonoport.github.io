@@ -37,8 +37,11 @@ function october() {
     playP(5.0, 137, 0.2); // Day 26
     playP(5.2, 131, 0.2); // Day 27
     playP(5.4, 91, 0.2); // Day 28
-};
 
+}
+
+var octTune = document.getElementById('October');
+octTune.addEventListener('click', october);
 
 function september() {
     playP(0, 57, 0.2); //Day 1
@@ -75,6 +78,9 @@ function september() {
 
 }
 
+var septTune = document.getElementById('September');
+septTune.addEventListener('click', september);
+
 function august() {
     playP(0, 57, 0.2); //Day 1
     playP(0.2, 48, 0.2); //Day 2
@@ -110,8 +116,8 @@ function august() {
 
 }
 
-
-
+var augTune = document.getElementById('August');
+augTune.addEventListener('click', august);
 
 function playP(delay, pitch, duration) {
     var startTime = audioContext.currentTime + delay;

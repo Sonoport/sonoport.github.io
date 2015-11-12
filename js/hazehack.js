@@ -56,7 +56,7 @@ leftDelay.connect(rightDelay);
 sampleGain.connect(context.destination);
 noiseGain.connect(context.destination);
 
-oscillator2.frequency.value = 50;
+oscillator2.frequency.value = 0;
 sampleGain.gain.value = 0.7;
 
 requestHuat();
@@ -66,7 +66,6 @@ requestAiyoyo();
 requestJialat();
 
 document.getElementById('hazeslider').addEventListener('input', function() {
-
 
   oscillator.frequency.value = this.value;
   oscillator2.frequency.value = this.value * 1.5;
@@ -80,15 +79,12 @@ document.getElementById('hazeslider').addEventListener('input', function() {
 });
 
 
-function play() {;
+function playSound() {
   loadXMLDoc();
-};
-
-
-function stop() {
-  noiseGain.gain.value = 0;
-
 }
+
+var playBtn = document.getElementById('buttonPlay');
+playBtn.addEventListener('click', playSound);
 
 function loadXMLDoc() {
   var xhr = new XMLHttpRequest();
@@ -116,6 +112,9 @@ function loadXMLDoc2() {
   //xhr2.open("GET", "http://www.nea.gov.sg/api/WebAPI/?dataset=12hrs_forecast&keyref=781CF461BB6606ADBC7C75BF9D4F60DBB6B4C035E6FD9C16", true);
   xhr2.send();
 }
+
+var wthrBtn = document.getElementById('weatherButton');
+wthrBtn.addEventListener('click', loadXMLDoc2);
 
 function parseXMLData2(xml2) {
   var xmlDoc2 = xml2.responseXML;
@@ -222,7 +221,6 @@ function parseXMLData(xml) {
   console.log(psiVal);
 
 
-
   function clearCoor() {
     document.getElementById("demo1").innerHTML = "";
   }
@@ -249,8 +247,6 @@ function parseXMLData(xml) {
     }
     return q;
   }
-
-
 
   // create a new javascript Date object
   var date = new Date();
@@ -349,8 +345,8 @@ function weather() {
 
 function time() {
 
-  noiseGain.gain.setValueAtTime(noiseGain.gain.value, context.currentTime);
-  noiseGain.gain.linearRampToValueAtTime(0.8, context.currentTime + 0.01);
+  noiseGain.gain.setValueAtTime(0, context.currentTime);
+  noiseGain.gain.linearRampToValueAtTime(0.4, context.currentTime + 0.2);
   noiseGain.gain.linearRampToValueAtTime(0.0, context.currentTime + 0.5);
 
 }
@@ -367,8 +363,11 @@ function goodPSIglobal() {
   source.start();
 
   time();
-  alert("PSI Level is less than 50! Smell the fresh air!");
+  
 }
+
+var btnOne = document.getElementById('button1');
+btnOne.addEventListener('click', goodPSIglobal);
 
 function moderatePSIglobal() {
 
@@ -382,9 +381,11 @@ function moderatePSIglobal() {
   source2.start();
 
   time();
-  alert("PSI Level is moderate! Avoid outdoor activities!");
 
 }
+
+var btnTwo = document.getElementById('button2');
+btnTwo.addEventListener('click', moderatePSIglobal);
 
 function unhealthyPSIglobal() {
 
@@ -398,9 +399,11 @@ function unhealthyPSIglobal() {
   source3.start();
 
   time();
-  alert("PSI Level is unhealthy! Wear a mask!");
 
 }
+
+var btnThree = document.getElementById('button3');
+btnThree.addEventListener('click', unhealthyPSIglobal);
 
 function badPSIglobal() {
 
@@ -414,9 +417,11 @@ function badPSIglobal() {
   source4.start();
 
   time();
-  alert("PSI Level is very unhealthy! You should stay indoors!");
 
 }
+
+var btnFour = document.getElementById('button4');
+btnFour.addEventListener('click', badPSIglobal);
 
 function verybadPSIglobal() {
 
@@ -430,9 +435,11 @@ function verybadPSIglobal() {
   source5.start();
 
   time();
-  alert("PSI Level is hazardous! Thank you Indonesia for 11 months of clean air! We appreciate it now");
 
 }
+
+var btnFive = document.getElementById('button5');
+btnFive.addEventListener('click', verybadPSIglobal);
 
 function airQualityGlobal() {
 

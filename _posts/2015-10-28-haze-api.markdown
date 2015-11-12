@@ -7,14 +7,11 @@ author:     "Aqilah Misuary"
 header-img: "/img/cleanwing.jpg"
 ---
 
-Note: This works best with Google Chrome or Firefox.
-
 Hey everyone! Today we're going to try and sonify the haze that has been plaguing Singapore recently! If you're not sure what we're talking about, here's some [information](https://en.wikipedia.org/wiki/Southeast_Asian_haze) on it. What we're going to do today is to use the [National Environmental Agency (NEA)'s API](https://www.nea.gov.sg/api) to gather data on the haze and use it to create sound.
 
 Click the button to hear the haze alarm.
 
-<button type="button" id="buttonPlay" class="btn btn-info btn-lg button-color" onclick="play() ">Play</button>
-<button type="button" id="buttonStop" class="btn btn-info btn-lg button-color" onclick="stop() ">Stop</button>
+<button type="button" id="buttonPlay" class="btn btn-info btn-lg button-color">Haze Alarm</button>
 <table id="demo"></table>
 
 As you can see from the table above, we are collecting the [PSI](http://www.nea.gov.sg/anti-pollution-radiation-protection/air-pollution-control/psi/psi) Pollutant Standards Index)reading and the air quality level description.
@@ -23,7 +20,7 @@ I would also like to thank [IMBA Interactive](http://www.imbainteractive.com/sin
 
 For those who wants to know the weather forecast plus the Haze alert:
 
-<button type="button" id="weatherButton" class="btn btn-info btn-xs button-color" onclick="loadXMLDoc2()">Weather</button>
+<button type="button" id="weatherButton" class="btn btn-info btn-xs button-color">Weather</button>
 
 <div id="weather"></div>
 
@@ -31,11 +28,11 @@ For those who wants to know the weather forecast plus the Haze alert:
 
 Click the buttons to hear the minimum PSI for each range.
 
-<p><button type="button" id="button1" class="btn btn-info btn-xs button-color" onclick="goodPSIglobal() ">Good</button>
-<button type="button" id="button2" class="btn btn-info btn-xs button-color" onclick="moderatePSIglobal()">Moderate</button>
-<button type="button" id="button3" class="btn btn-info btn-xs button-color" onclick="unhealthyPSIglobal()">Unhealthy</button>
-<button type="button" id="button4" class="btn btn-info btn-xs button-color" onclick="badPSIglobal()">Very Unhealthy</button>
-<button type="button" id="button5" class="btn btn-info btn-xs button-color" onclick="verybadPSIglobal()">Hazardous</button></p>
+<p><button type="button" id="button1" class="btn btn-info btn-xs button-color">Good</button>
+<button type="button" id="button2" class="btn btn-info btn-xs button-color">Moderate</button>
+<button type="button" id="button3" class="btn btn-info btn-xs button-color">Unhealthy</button>
+<button type="button" id="button4" class="btn btn-info btn-xs button-color">Very Unhealthy</button>
+<button type="button" id="button5" class="btn btn-info btn-xs button-color">Hazardous</button></p>
 
 ###Where are the sounds coming from?
 
@@ -49,9 +46,9 @@ Move the slider to hear the PSI values
 
 Now I think that sounds really bland, why don't we use those PSI values to make some music? Click the buttons to hear the PSI values for the month (Except for October which I stopped on the 28th).
 
-<button type="button" onclick="august()">August</button>
-<button type="button" onclick="september()">September</button>
-<button type="button" onclick="october()">October</button>
+<button type="button" id="August">August</button>
+<button type="button" id="September">September</button>
+<button type="button" id="October">October</button>
 
 It's very interesting to hear because October is the most 'melodic'.  This is because the PSI level for the month of October was the [worst on record](http://www.straitstimes.com/asia/haze-crisis-set-to-be-one-of-the-worst-on-record) so far. What I did was to search [historical PSI readings](http://www.haze.gov.sg/haze-updates/historical-psi-readings/year/2015/month/10/day/28) and read PSI data from there. I mostly choose the 12pm readings.
 
