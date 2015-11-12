@@ -7,8 +7,6 @@ author:     "Aqilah Misuary"
 header-img: "/img/cleanwing.jpg"
 ---
 
-Note: This works best with Google Chrome or Firefox.
-
 Hey everyone! Today we're going to try and sonify the haze that has been plaguing Singapore recently! If you're not sure what we're talking about, here's some [information](https://en.wikipedia.org/wiki/Southeast_Asian_haze) on it. What we're going to do today is to use the [National Environmental Agency (NEA)'s API](https://www.nea.gov.sg/api) to gather data on the haze and use it to create sound.
 
 Click the button to hear the haze alarm.
