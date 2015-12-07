@@ -134,35 +134,35 @@ function parseXMLData2(xml2) {
     case "FD":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/singaporefairday.jpeg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/singaporefairday.jpeg';
     div.appendChild(img);
     break;
 
     case "FN":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/night.jpg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/night.jpeg';
     div.appendChild(img);
     break;
 
     case "PC":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/partlycloudy.jpg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/partly%20cloudy.jpeg';
     div.appendChild(img);
     break;
 
     case "CD":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/partlycloudy.jpg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/partly%20cloudy.jpeg';
     div.appendChild(img);
     break;
 
     case "HZ":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/hazecity.jpg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/IMG_20151015_114327.jpg';
     div.appendChild(img);
     weather();
     break;
@@ -170,28 +170,28 @@ function parseXMLData2(xml2) {
     case "WD":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/windy.jpeg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/windy.jpeg';
     div.appendChild(img);
     break;
 
     case "RA":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/rain.jpeg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/rain.jpeg';
     div.appendChild(img);
     break;
 
     case "PS":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/rainss.jpeg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/rainss.jpeg';
     div.appendChild(img);
     break;
 
     case "SH":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/hazecity.jpg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/IMG_20151015_114602.jpg';
     div.appendChild(img);
     //playSunny();
     break;
@@ -199,7 +199,7 @@ function parseXMLData2(xml2) {
     case "TS":
     document.getElementById("weather").innerHTML = "Forecast: " + x;
     console.log(w);
-    img.src = '/img/ThunderyShowers.jpeg';
+    img.src = 'https://dl.dropboxusercontent.com/u/30075450/ThunderyShowers.jpeg';
     div.appendChild(img);
     break;
 
