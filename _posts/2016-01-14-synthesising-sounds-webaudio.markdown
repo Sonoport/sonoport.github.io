@@ -7,7 +7,7 @@ author:     "Aqilah Misuary"
 header-img: "/img/audioLaptop.jpg"
 ---
 
-Hi everyone! Welcome to the new year! We're excited to kick off our first blog post for 2016 with something really fun and simple to do! Synthesising sounds with web audio! Our main reference will be this blog post by Chris Wilson on [Synthesising Drum Sounds with the Web Audio API](https://dev.opera.com/articles/drum-sounds-webaudio/) and also [Synthesizing Hi-Hats with Web Audio](http://joesul.li/van/synthesizing-hi-hats/). I learnt many new things just by reading those articles and also refering to the SYNTH SECRETS articles by [Sound on Sound Magazine](http://www.soundonsound.com/sos/allsynthsecrets.htm). 
+Hi everyone! Welcome to the new year! We're excited to kick off our first blog post for 2016 with something really fun and simple to do! Synthesising sounds with web audio! Our main reference will be this blog post by [Chris Lowis](https://dev.opera.com/authors/chris-lowis/) on [Synthesising Drum Sounds with the Web Audio API](https://dev.opera.com/articles/drum-sounds-webaudio/) and also [Synthesizing Hi-Hats with Web Audio](http://joesul.li/van/synthesizing-hi-hats/) by [Joe Sullivan](https://twitter.com/itsjoesullivan). I learnt many new things just by reading those articles and also refering to the SYNTH SECRETS articles by [Sound on Sound Magazine](http://www.soundonsound.com/sos/allsynthsecrets.htm). 
 
 What we're going to do today is to synthesise the sounds of a kick drum, hi-hat and snare.
 
