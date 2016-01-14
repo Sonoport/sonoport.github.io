@@ -207,7 +207,7 @@ var filter = audioContext.createBiquadFilter();
     filter.frequency.linearRampToValueAtTime(1000, audioContext.currentTime + 0.2);
 ```
 
-Now lets add an oscillator and gain node to create that sharp percussive sound.This helps the snare sound become sound much fuller. This is the same technique that we used to create the kick sound. 
+Now lets add an oscillator and gain node to create that sharp percussive sound.This helps the snare sound become much fuller. This is the same technique that we used to create the kick sound. 
 
 ```
 var osc3 = audioContext.createOscillator();
