@@ -19,29 +19,20 @@ function kick() {
     var gainOsc2 = audioContext.createGain();
 
     osc.type = "triangle";
-    //osc.frequency.value = 40;
-    //gainOsc.gain.value = 0;
-
     osc2.type = "sine";
-    //osc2.frequency.value = 80;
-    //gainOsc2.gain.value = 0;
 
     gainOsc.gain.setValueAtTime(1, audioContext.currentTime);
-    //gainOsc.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.001);
     gainOsc.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
     gainOsc.connect(audioContext.destination);
 
     gainOsc2.gain.setValueAtTime(1, audioContext.currentTime);
-    //gainOsc2.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.001);
     gainOsc2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
     gainOsc2.connect(audioContext.destination);
 
     osc.frequency.setValueAtTime(120, audioContext.currentTime);
-    //osc.frequency.linearRampToValueAtTime(0, audioContext.currentTime + 0.001);
     osc.frequency.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
 
     osc2.frequency.setValueAtTime(50, audioContext.currentTime);
-    //osc.frequency.linearRampToValueAtTime(0, audioContext.currentTime + 0.001);
     osc2.frequency.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
 
     osc.connect(gainOsc);
@@ -72,7 +63,6 @@ function snare() {
     gainOsc3.gain.value = 0;
 
     gainOsc3.gain.setValueAtTime(0, audioContext.currentTime);
-    //gainOsc3.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.001);
     gainOsc3.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
 
     osc3.connect(gainOsc3);
@@ -88,8 +78,8 @@ function snare() {
         data = buffer.getChannelData(0);
 
     var filter = audioContext.createBiquadFilter();
+
     filter.type = "highpass";
-    //filter.frequency.value = 1000;
     filter.frequency.setValueAtTime(100, audioContext.currentTime);
     filter.frequency.linearRampToValueAtTime(1000, audioContext.currentTime + 0.2);
 
@@ -132,23 +122,17 @@ function hihat() {
 
         osc4.start(audioContext.currentTime);
         osc4.stop(audioContext.currentTime + 0.05);
-        
-    });
 
-    //gainOsc4.gain.value = 0;
+    });
 
     gainOsc4.gain.setValueAtTime(1, audioContext.currentTime);
     gainOsc4.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
-    
-    //osc4.connect(bandpass); 
+
     bandpass.connect(highpass);
     highpass.connect(gainOsc4);
     gainOsc4.connect(mixGain);
-    
-    mixGain.gain.value = 1;
 
-    //osc4.start(audioContext.currentTime);
-    //osc4.stop(audioContext.currentTime + 0.05);
+    mixGain.gain.value = 1;
 
 };
 
@@ -157,7 +141,7 @@ function hihat() {
 kickButton.addEventListener('click', function() {
 
     interval(function() {
-        kick(); 
+        kick();
     }, 300, 10);
 
 });
@@ -165,7 +149,7 @@ kickButton.addEventListener('click', function() {
 snareButton.addEventListener('click', function() {
 
     interval(function() {
-        snare(); 
+        snare();
     }, 300, 10);
 
 });
@@ -173,30 +157,14 @@ snareButton.addEventListener('click', function() {
 hihatButton.addEventListener('click', function() {
 
     interval(function() {
-        hihat(); 
+        hihat();
     }, 300, 10);
 
 });
 
 mixButton.addEventListener('click', function() {
 
-    interval(function() {
-        kick(); 
-    }, 600, 10);
-    interval(function() {
-        snare(); 
-    }, 1200, 5);
-        interval(function() {
-        //hitom(); 
-        //kick();
-    }, 300, 20);
-                interval(function() {
-        //lowtom(); 
-    }, 100, 60);
-         interval(function() {
-        hihat(); 
-
-    }, 200, 30);
+    draw2();
 
 });
 
@@ -227,87 +195,87 @@ filterGain.gain.value = 0;
 
 //EXAMPLE SOUNDS
 
-    var kickMixGain = audioContext.createGain();
+var kickMixGain = audioContext.createGain();
 
-    var kickOsc = audioContext.createOscillator();
-    var kickOsc2 = audioContext.createOscillator();
-    var kickGainOsc = audioContext.createGain();
-    var kickGainOsc2 = audioContext.createGain();
+var kickOsc = audioContext.createOscillator();
+var kickOsc2 = audioContext.createOscillator();
+var kickGainOsc = audioContext.createGain();
+var kickGainOsc2 = audioContext.createGain();
 
-    kickOsc.type = "triangle";
-    kickOsc.frequency.value = 40;
-    kickGainOsc.gain.value = 1;
+kickOsc.type = "triangle";
+kickOsc.frequency.value = 40;
+kickGainOsc.gain.value = 1;
 
-    kickOsc2.type = "sine";
-    kickOsc2.frequency.value = 80;
-    kickGainOsc2.gain.value = 1;
+kickOsc2.type = "sine";
+kickOsc2.frequency.value = 80;
+kickGainOsc2.gain.value = 1;
 
-    kickOsc.connect(kickGainOsc);
-    kickOsc2.connect(kickGainOsc2);
-    kickGainOsc2.connect(kickMixGain);
-    kickGainOsc.connect(kickMixGain);
+kickOsc.connect(kickGainOsc);
+kickOsc2.connect(kickGainOsc2);
+kickGainOsc2.connect(kickMixGain);
+kickGainOsc.connect(kickMixGain);
 
-    kickMixGain.gain.value = 0;
+kickMixGain.gain.value = 0;
 
-    kickOsc.start(audioContext.currentTime);
-    kickOsc2.start(audioContext.currentTime);
+kickOsc.start(audioContext.currentTime);
+kickOsc2.start(audioContext.currentTime);
 
 
 //VISUALISING THE KICK WAVEFORM
 
-    var canvas = document.getElementById('myCanvas');
+var canvas = document.getElementById('myCanvas');
 
-    var analyser = audioContext.createAnalyser();
-    var WIDTH = 600;
-    var HEIGHT = 200;
+var analyser = audioContext.createAnalyser();
+var WIDTH = 600;
+var HEIGHT = 200;
 
-    kickMixGain.connect(analyser);
+kickMixGain.connect(analyser);
 
-    var canvas = document.querySelector('.visualizer');
-    var myCanvas = canvas.getContext("2d");
+var canvas = document.querySelector('.visualizer');
+var myCanvas = canvas.getContext("2d");
 
-    analyser.fftSize = 2048;
+analyser.fftSize = 2048;
 
-    var bufferLength = analyser.frequencyBinCount; 
-    /*an unsigned long value half that of the FFT size. This generally equates to 
-    the number of data values you will have to play with for the visualization*/
+var bufferLength = analyser.frequencyBinCount;
+/*an unsigned long value half that of the FFT size. This generally equates to 
+the number of data values you will have to play with for the visualization*/
 
-    var dataArray = new Uint8Array(bufferLength);
+var dataArray = new Uint8Array(bufferLength);
 
-    myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
+myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
 
 
 function draw() {
-  drawVisual = requestAnimationFrame(draw);
-  
-  analyser.getByteTimeDomainData(dataArray);
-  
-  myCanvas.fillStyle = 'white';
-  myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
-  myCanvas.lineWidth = 2;
-  myCanvas.strokeStyle = 'black';
-  myCanvas.beginPath();
-  
-  
-  var sliceWidth = WIDTH * 1.0 / bufferLength;
-  var x = 0;
-  
-  for(var i = 0; i < bufferLength; i++) {
-   
-        var v = dataArray[i] / 128.0;
-        var y = v * HEIGHT/2;
+    drawVisual = requestAnimationFrame(draw);
 
-        if(i === 0) {
-          myCanvas.moveTo(x, y);
+    analyser.getByteTimeDomainData(dataArray);
+
+    myCanvas.fillStyle = 'white';
+    myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
+    myCanvas.lineWidth = 2;
+    myCanvas.strokeStyle = 'black';
+    myCanvas.beginPath();
+
+
+    var sliceWidth = WIDTH * 1.0 / bufferLength;
+    var x = 0;
+
+    for (var i = 0; i < bufferLength; i++) {
+
+        var v = dataArray[i] / 128.0;
+        var y = v * HEIGHT / 2;
+
+        if (i === 0) {
+            myCanvas.moveTo(x, y);
         } else {
-          myCanvas.lineTo(x, y);
+            myCanvas.lineTo(x, y);
         }
 
         x += sliceWidth;
-      };
-  
-  myCanvas.lineTo(WIDTH, HEIGHT/2);
-      myCanvas.stroke();
+    };
+
+    myCanvas.lineTo(WIDTH, HEIGHT / 2);
+    myCanvas.stroke();
 };
 
 canvas.addEventListener("mouseover", function() {
@@ -316,14 +284,14 @@ canvas.addEventListener("mouseover", function() {
     kickMixGain.connect(audioContext.destination);
     draw();
 
-    });
+});
 
 canvas.addEventListener("mouseout", function() {
 
     kickMixGain.gain.value = 0;
- 
 
-    });
+
+});
 
 
 //GENERATING NOISE
@@ -332,7 +300,7 @@ var noiseButton = document.getElementById('noiseButton');
 
 noiseButton.addEventListener("click", function() {
 
-noise();
+    noise();
 
 });
 
@@ -365,21 +333,21 @@ var ratios = [2, 3, 4.16, 5.43, 6.79, 8.21];
 
 function wave() {
 
-ratios.forEach(function(ratio) {
+    ratios.forEach(function(ratio) {
 
-    var osc4 = audioContext.createOscillator();
+        var osc4 = audioContext.createOscillator();
 
-    osc4.type = "square";
-    osc4.frequency.value = fundamental * ratio;
-  
-    osc4.start(audioContext.currentTime);
-    osc4.stop(audioContext.currentTime + 0.5);
-  
-    osc4.connect(waveGain);
-    waveGain.connect(audioContext.destination);
+        osc4.type = "square";
+        osc4.frequency.value = fundamental * ratio;
+
+        osc4.start(audioContext.currentTime);
+        osc4.stop(audioContext.currentTime + 0.5);
+
+        osc4.connect(waveGain);
+        waveGain.connect(audioContext.destination);
 
     });
-  
+
 };
 
 var wavez = document.getElementById('sixWaves');
@@ -387,82 +355,229 @@ var wavez = document.getElementById('sixWaves');
 wavez.addEventListener("click", function() {
 
     wave();
-   
-    });
+
+});
 
 function wave2() {
 
-ratios.forEach(function(ratio) {
+    ratios.forEach(function(ratio) {
 
-    var osc4 = audioContext.createOscillator();
+        var osc4 = audioContext.createOscillator();
 
-    var bandpass = audioContext.createBiquadFilter();
+        var bandpass = audioContext.createBiquadFilter();
 
-    bandpass.type = "bandpass";
-    bandpass.frequency.value = 10000;
+        bandpass.type = "bandpass";
+        bandpass.frequency.value = 10000;
 
 
-    osc4.type = "square";
-    osc4.frequency.value = fundamental * ratio;
+        osc4.type = "square";
+        osc4.frequency.value = fundamental * ratio;
 
-    //waveGain.gain.setValueAtTime(1, audioContext.currentTime);
-    //waveGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
-  
-    osc4.start(audioContext.currentTime);
-    osc4.stop(audioContext.currentTime + 0.5);
-  
-    osc4.connect(bandpass);
-    bandpass.connect(waveGain);
-    waveGain.connect(audioContext.destination);
+        //waveGain.gain.setValueAtTime(1, audioContext.currentTime);
+        //waveGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+
+        osc4.start(audioContext.currentTime);
+        osc4.stop(audioContext.currentTime + 0.5);
+
+        osc4.connect(bandpass);
+        bandpass.connect(waveGain);
+        waveGain.connect(audioContext.destination);
 
     });
-  
-};
 
+};
 var wavez = document.getElementById('bandWaves');
 
 wavez.addEventListener("click", function() {
 
-wave2();
-   
-    });
+    wave2();
+
+});
 
 //PERCUSSIVE SHOT FOR WAVE EXAMPLE
 
 function shortWave() {
 
-ratios.forEach(function(ratio) {
+    ratios.forEach(function(ratio) {
 
-    var osc4 = audioContext.createOscillator();
+        var osc4 = audioContext.createOscillator();
 
-    var bandpass = audioContext.createBiquadFilter();
+        var bandpass = audioContext.createBiquadFilter();
 
-    bandpass.type = "bandpass";
-    bandpass.frequency.value = 10000;
+        bandpass.type = "bandpass";
+        bandpass.frequency.value = 10000;
 
 
-    osc4.type = "square";
-    osc4.frequency.value = fundamental * ratio;
+        osc4.type = "square";
+        osc4.frequency.value = fundamental * ratio;
 
-    waveGain.gain.setValueAtTime(1, audioContext.currentTime);
-    waveGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
-  
-    osc4.start(audioContext.currentTime);
-    osc4.stop(audioContext.currentTime + 0.05);
-  
-    osc4.connect(bandpass);
-    bandpass.connect(waveGain);
-    waveGain.connect(audioContext.destination);
+        waveGain.gain.setValueAtTime(1, audioContext.currentTime);
+        waveGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+
+        osc4.start(audioContext.currentTime);
+        osc4.stop(audioContext.currentTime + 0.05);
+
+        osc4.connect(bandpass);
+        bandpass.connect(waveGain);
+        waveGain.connect(audioContext.destination);
 
     });
-  
+
 };
 
 var wave3 = document.getElementById('shortWaves');
 
 wave3.addEventListener("click", function() {
 
-shortWave();
-   
+    shortWave();
+
+});
+
+//TESTING REQUESTANIMATIONFRAME FOR SCHEDULING
+
+var newBoxes = document.getElementById('container');
+var newBoxes2 = document.getElementById('container2');
+var newBoxes3 = document.getElementById('container3');
+var newBoxes4 = document.getElementById('container4');
+var newBoxes5 = document.getElementById('container5');
+
+var fps = 6;
+
+function draw2() {
+
+    var Timer = setTimeout(function() {
+
+        requestAnimationFrame(draw2);
+
+        var elements = container.getElementsByTagName("div").length;
+
+
+        if (elements % 2 == 0 || elements == 0) {
+
+            createBox();
+
+        };
+
+        if (elements == 0 || elements == 12) {
+
+            createBox2();
+
+        }
+
+        if (elements == 6 || elements == 18) {
+            createBox3();
+            createBox2();
+        }
+
+        while (newBoxes.hasChildNodes() && elements > 20) {
+
+            newBoxes.removeChild(newBoxes.firstChild);
+
+        };
+
+
+        while (newBoxes2.hasChildNodes() && elements > 20) {
+
+            newBoxes2.removeChild(newBoxes2.firstChild);
+
+        };
+
+        while (newBoxes3.hasChildNodes() && elements > 20) {
+
+            newBoxes3.removeChild(newBoxes3.firstChild);
+
+        };
+
+    }, 1000 / fps);
+
+    var stopIt = document.getElementById('stopButton');
+
+    stopIt.addEventListener("click", function() {
+
+        clearTimeout(Timer);
+
     });
+
+}
+
+//DRAW BOXES
+
+var bigbox = document.getElementById('container');
+var bigbox2 = document.getElementById('container2');
+var bigbox3 = document.getElementById('container3');
+var bigbox4 = document.getElementById('container4');
+var bigbox5 = document.getElementById('container5');
+
+function createBox() {
+
+    box = document.createElement('div');
+    box.style.width = "50px";
+    box.style.height = "50px";
+    box.style.background = "white";
+    box.style.border = "3px solid black";
+    box.style.position = "in-line";
+    box.style.float = "left";
+    box.innerHTML = "<div class='test'>Hi-Hat</div>";
+    box.style.fontWeight = "bold";
+    box.style.fontSize = "Small";
+    box.style.fontFamily = "freight-text-pro, Times New Roman, serif";
+    bigbox.appendChild(box);
+    bigbox.style.width = "900px";
+    bigbox.style.height = "60px";
+    bigbox.style.position = "relative";
+    bigbox.style.border = "10px solid white";
+    bigbox.style.display = "in-line";
+    hihat();
+
+};
+
+function createBox2() {
+
+    box2 = document.createElement('div');
+    box2.style.width = "100px";
+    box2.style.height = "50px";
+    box2.style.background = "white";
+    box2.style.border = "3px solid black";
+    box2.style.position = "relative";
+    box2.style.float = "left";
+    box2.innerHTML = "<div class='test'>Kick</div>";
+    box2.style.fontWeight = "bold";
+    box2.style.fontSize = "Small";
+    box2.style.fontFamily = "freight-text-pro, Times New Roman, serif";
+    bigbox2.appendChild(box2);
+    bigbox2.style.width = "900px";
+    bigbox2.style.height = "60px";
+    bigbox2.style.position = "relative";
+    bigbox2.style.display = "in-line";
+    bigbox2.style.border = "10px solid white";
+    kick();
+
+};
+
+function createBox3() {
+
+    box3 = document.createElement('div');
+    box3.style.width = "100px";
+    box3.style.height = "50px";
+    box3.style.background = "white";
+    box3.style.border = "3px solid black";
+    box3.style.position = "relative";
+    box3.style.float = "left";
+    box3.innerHTML = "<div class='test'>Snare</div>";
+    box3.style.fontWeight = "bold";
+    box3.style.fontSize = "Small";
+    box3.style.fontFamily = "freight-text-pro, Times New Roman, serif";
+    bigbox3.appendChild(box3);
+    bigbox3.style.width = "900px";
+    bigbox3.style.height = "60px";
+    bigbox3.style.position = "relative";
+    bigbox3.style.display = "in-line";
+    bigbox3.style.border = "10px solid white";
+    snare();
+
+};
+
+
+
+
 

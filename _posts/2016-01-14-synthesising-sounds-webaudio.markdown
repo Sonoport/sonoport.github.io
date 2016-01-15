@@ -12,6 +12,16 @@ Hi everyone! Welcome to the new year! We're excited to kick off our first blog p
 What we're going to do today is to synthesise the sounds of a kick drum, hi-hat and snare.
 
 <button type="button" id="mixButton" class="btn btn-info btn-lg button-color">Play</button>
+<button type="button" id="stopButton" class="btn btn-info btn-lg button-color">Stop</button>
+
+<div id="container" class="bigbox">
+</div>
+
+<div id="container2" class="bigbox">
+</div>
+
+<div id="container3" class="bigbox">
+</div>
 
 **What is sound synthesis?**
 
@@ -299,3 +309,4 @@ Yay! We're finally done synthesising! You can find the whole code here. Feel fre
 
 
 <script src="js/synthesising-sounds.js"></script>
+<link rel="stylesheet" href="css/synthesising.css">
