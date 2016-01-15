@@ -541,7 +541,7 @@ function createBox() {
     box.style.height = "50px";
     box.style.background = "white";
     box.style.border = "3px solid black";
-    box.style.position = "in-line";
+    box.style.position = "relative";
     box.style.float = "left";
     box.innerHTML = "<div class='test'>Hi-Hat</div>";
     box.style.fontWeight = "bold";
