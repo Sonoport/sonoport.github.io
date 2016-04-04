@@ -1,3 +1,4 @@
+(function(){
 
 function createAudioContext (desiredSampleRate) {
   var AudioCtor = window.AudioContext || window.webkitAudioContext
@@ -528,7 +529,7 @@ function draw2() {
 
 //DRAW BOXES
 
-var bigbox = document.getElementById('container');
+var bigbox = document.querySelector(".bigbox");
 var bigbox2 = document.getElementById('container2');
 var bigbox3 = document.getElementById('container3');
 var bigbox4 = document.getElementById('container4');
@@ -603,7 +604,7 @@ function createBox3() {
 
 };
 
-
+}());
 
 
 
