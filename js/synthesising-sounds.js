@@ -529,13 +529,7 @@ function draw2() {
 
 //DRAW BOXES
 
-var giantBox = document.querySelector(".giantbox");
-var bigbox2 = document.getElementById('container2');
-var bigbox3 = document.getElementById('container3');
-var bigbox4 = document.getElementById('container4');
-var bigbox5 = document.getElementById('container5');
-
-// CHECK IF PAGE IS LOADED IN WORDPRESS
+// Check if page is loaded in Wordpress
 if(window.location.href === "http://www.soundesign.info/2016/04/02/synthesising-sounds-with-web-audio-api/") {
 
     console.log("Loaded in Wordpress");
@@ -558,12 +552,12 @@ function createBox() {
     box.style.fontWeight = "bold";
     box.style.fontSize = "Small";
     box.style.fontFamily = "freight-text-pro, Times New Roman, serif";
-    giantBox.appendChild(box);
-    giantBox.style.width = "900px";
-    giantBox.style.height = "60px";
-    giantBox.style.position = "relative";
-    giantBox.style.border = "10px solid white";
-    giantBox.style.display = "in-line";
+    newBoxes.appendChild(box);
+    newBoxes.style.width = "900px";
+    newBoxes.style.height = "60px";
+    newBoxes.style.position = "relative";
+    newBoxes.style.border = "10px solid white";
+    newBoxes.style.display = "in-line";
     hihat();
 
 };
@@ -581,12 +575,12 @@ function createBox2() {
     box2.style.fontWeight = "bold";
     box2.style.fontSize = "Small";
     box2.style.fontFamily = "freight-text-pro, Times New Roman, serif";
-    bigbox2.appendChild(box2);
-    bigbox2.style.width = "900px";
-    bigbox2.style.height = "60px";
-    bigbox2.style.position = "relative";
-    bigbox2.style.display = "in-line";
-    bigbox2.style.border = "10px solid white";
+    newBoxes2.appendChild(box2);
+    newBoxes2.style.width = "900px";
+    newBoxes2.style.height = "60px";
+    newBoxes2.style.position = "relative";
+    newBoxes2.style.display = "in-line";
+    newBoxes2.style.border = "10px solid white";
     kick();
 
 };
@@ -604,12 +598,12 @@ function createBox3() {
     box3.style.fontWeight = "bold";
     box3.style.fontSize = "Small";
     box3.style.fontFamily = "freight-text-pro, Times New Roman, serif";
-    bigbox3.appendChild(box3);
-    bigbox3.style.width = "900px";
-    bigbox3.style.height = "60px";
-    bigbox3.style.position = "relative";
-    bigbox3.style.display = "in-line";
-    bigbox3.style.border = "10px solid white";
+    newBoxes3.appendChild(box3);
+    newBoxes3.style.width = "900px";
+    newBoxes3.style.height = "60px";
+    newBoxes3.style.position = "relative";
+    newBoxes3.style.display = "in-line";
+    newBoxes3.style.border = "10px solid white";
     snare();
 
 };
