@@ -542,6 +542,7 @@ if(window.location.href === "http://www.soundesign.info/2016/04/02/synthesising-
 } else {
     console.log("Page is not loaded in Wordpress");
 }
+console.log(window.location.href);
 
 
 function createBox() {
