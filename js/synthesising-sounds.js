@@ -545,6 +545,11 @@ if(window.location.href === "http://www.soundesign.info/2016/04/02/synthesising-
     console.log("Page is not loaded in Wordpress");
 }
 
+// CHECK IF PAGE IS LOADING IN WORDPRESS JQUERY
+$(document).ready(function(){
+    console.log("Does Jquery work?");
+});
+
 
 
 function createBox() {
