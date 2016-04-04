@@ -537,7 +537,7 @@ var bigbox5 = document.getElementById('container5');
 
 // UGLY HACK TO REMOVE DIVS IN WORDPRESS
 if(window.location.href === "http://www.soundesign.info/2016/04/02/synthesising-sounds-with-web-audio-api/") {
-        bigbox.remove();
+        document.getElementById("container").getElementsByClassName("bigbox").remove();
 } else {
     console.log("Page is not loaded in Wordpress");
 }
