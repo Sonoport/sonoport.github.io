@@ -529,11 +529,19 @@ function draw2() {
 
 //DRAW BOXES
 
-var bigbox = document.querySelector(".bigbox");
+var giantBox = document.querySelector(".giantbox");
 var bigbox2 = document.getElementById('container2');
 var bigbox3 = document.getElementById('container3');
 var bigbox4 = document.getElementById('container4');
 var bigbox5 = document.getElementById('container5');
+
+// UGLY HACK TO REMOVE DIVS IN WORDPRESS
+if(window.location.href === "http://www.soundesign.info/2016/04/02/synthesising-sounds-with-web-audio-api/") {
+        bigbox.remove();
+} else {
+    console.log("Page is not loaded in Wordpress");
+}
+
 
 function createBox() {
 
@@ -548,12 +556,12 @@ function createBox() {
     box.style.fontWeight = "bold";
     box.style.fontSize = "Small";
     box.style.fontFamily = "freight-text-pro, Times New Roman, serif";
-    bigbox.appendChild(box);
-    bigbox.style.width = "900px";
-    bigbox.style.height = "60px";
-    bigbox.style.position = "relative";
-    bigbox.style.border = "10px solid white";
-    bigbox.style.display = "in-line";
+    giantBox.appendChild(box);
+    giantBox.style.width = "900px";
+    giantBox.style.height = "60px";
+    giantBox.style.position = "relative";
+    giantBox.style.border = "10px solid white";
+    giantBox.style.display = "in-line";
     hihat();
 
 };
