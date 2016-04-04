@@ -535,14 +535,16 @@ var bigbox3 = document.getElementById('container3');
 var bigbox4 = document.getElementById('container4');
 var bigbox5 = document.getElementById('container5');
 
-// UGLY HACK TO REMOVE DIVS IN WORDPRESS
+// CHECK IF PAGE IS LOADED IN WORDPRESS
 if(window.location.href === "http://www.soundesign.info/2016/04/02/synthesising-sounds-with-web-audio-api/") {
-        //document.getElementById("container").getElementsByClassName("bigbox").remove();
+
     console.log("Loaded in Wordpress");
+
 } else {
+
     console.log("Page is not loaded in Wordpress");
 }
-console.log(window.location.href);
+
 
 
 function createBox() {
