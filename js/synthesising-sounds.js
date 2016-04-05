@@ -417,6 +417,11 @@ the number of data values you will have to play with for the visualization*/
     // Check if page is loaded in Wordpress
     if (window.location.href === 'http://www.soundesign.info/2016/04/02/synthesising-sounds-with-web-audio-api/') {
         console.log('Loaded in Wordpress');
+        var el = document.querySelector(".bigbox");
+        while (el.firstChild) {
+            el.removeChild(el.firstChild);
+        }
+
     } else {
         console.log('Page is not loaded in Wordpress');
     }
@@ -439,7 +444,7 @@ the number of data values you will have to play with for the visualization*/
         if (instrument === hihat) {
 
             hihat();
-            box.innerHTML = '<div class=\'test\'>Hi-Hat</div>';
+            box.innerHTML = '<div id="hihatDiv">Hi-Hat</div>';
             newBoxes.appendChild(box);
             newBoxes.style.width = '900px';
             newBoxes.style.height = '60px';
