@@ -379,53 +379,7 @@ the number of data values you will have to play with for the visualization*/
     var newBoxes5 = document.getElementById('container5');
     var fps = 6;
 
-    function draw2() {
-
-        var Timer = setTimeout(function() {
-
-            requestAnimationFrame(draw2);
-
-            var elements = container1.getElementsByTagName('div').length;
-            if (elements % 2 == 0 || elements == 0) {
-                createBox(hihat);
-            }
-            if (elements == 0 || elements == 12) {
-                createBox(kick);
-            }
-            if (elements == 6 || elements == 18) {
-                createBox(snare);
-                createBox(kick);
-            }
-            while (newBoxes.hasChildNodes() && elements > 20) {
-                newBoxes.removeChild(newBoxes.firstChild);
-            }
-            while (newBoxes2.hasChildNodes() && elements > 20) {
-                newBoxes2.removeChild(newBoxes2.firstChild);
-            }
-            while (newBoxes3.hasChildNodes() && elements > 20) {
-                newBoxes3.removeChild(newBoxes3.firstChild);
-            }
-        }, 1000 / fps);
-
-        var stopIt = document.getElementById('stopButton');
-
-        stopIt.addEventListener('click', function() {
-            clearTimeout(Timer);
-        });
-    }
-
-    // Check if page is loaded in Wordpress
-    if (window.location.href === 'http://www.soundesign.info/2016/04/02/synthesising-sounds-with-web-audio-api/') {
-        console.log('Loaded in Wordpress');
-        var el = document.querySelector(".bigbox");
-        while (el.firstChild) {
-            el.removeChild(el.firstChild);
-        }
-
-    } else {
-        console.log('Page is not loaded in Wordpress');
-    }
-
+    
     //DRAW BOXES
     function createBox(instrument) {
 
@@ -476,5 +430,50 @@ the number of data values you will have to play with for the visualization*/
         };
 
     };
+
+    function draw2() {
+
+        var Timer = setTimeout(function() {
+
+            requestAnimationFrame(draw2);
+
+            var elements = container1.getElementsByTagName('div').length;
+            if (elements % 2 == 0 || elements == 0) {
+                createBox(hihat);
+            }
+            if (elements == 0 || elements == 12) {
+                createBox(kick);
+            }
+            if (elements == 6 || elements == 18) {
+                createBox(snare);
+                createBox(kick);
+            }
+            while (newBoxes.hasChildNodes() && elements > 20) {
+                newBoxes.removeChild(newBoxes.firstChild);
+            }
+            while (newBoxes2.hasChildNodes() && elements > 20) {
+                newBoxes2.removeChild(newBoxes2.firstChild);
+            }
+            while (newBoxes3.hasChildNodes() && elements > 20) {
+                newBoxes3.removeChild(newBoxes3.firstChild);
+            }
+        }, 1000 / fps);
+
+        var stopIt = document.getElementById('stopButton');
+
+        stopIt.addEventListener('click', function() {
+            clearTimeout(Timer);
+        });
+    }
+
+    // Check if page is loaded in Wordpress
+    if (window.location.href === 'http://www.soundesign.info/2016/04/02/synthesising-sounds-with-web-audio-api/') {
+
+        console.log('Loaded in Wordpress');
+
+    } else {
+
+        console.log('Page is not loaded in Wordpress');
+    }
 
 }());
