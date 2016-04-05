@@ -47,7 +47,6 @@
         osc.frequency.setValueAtTime(120, audioContext.currentTime);
         osc.frequency.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
         osc2.frequency.setValueAtTime(50, audioContext.currentTime);
-        osc2.frequency.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
 
         //Connections
         osc.connect(gainOsc);
@@ -421,7 +420,7 @@ the number of data values you will have to play with for the visualization*/
     } else {
         console.log('Page is not loaded in Wordpress');
     }
-    
+
     //DRAW BOXES
     function createBox(instrument) {
 
