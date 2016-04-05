@@ -14,7 +14,7 @@ What we're going to do today is to synthesise the sounds of a kick drum, hi-hat 
 <button type="button" id="mixButton" class="btn btn-info btn-lg button-color">Play</button>
 <button type="button" id="stopButton" class="btn btn-info btn-lg button-color">Stop</button>
 
-<div id="container" class="bigbox">
+<div id="container1" class="bigbox">
 </div>
 
 <div id="container2" class="bigbox">

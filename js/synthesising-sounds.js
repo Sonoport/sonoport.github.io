@@ -372,7 +372,7 @@ the number of data values you will have to play with for the visualization*/
     });
 
     //TESTING REQUESTANIMATIONFRAME FOR SCHEDULING
-    var newBoxes = document.getElementById('container');
+    var newBoxes = document.getElementById('container1');
     var newBoxes2 = document.getElementById('container2');
     var newBoxes3 = document.getElementById('container3');
     var newBoxes4 = document.getElementById('container4');
@@ -385,7 +385,7 @@ the number of data values you will have to play with for the visualization*/
 
             requestAnimationFrame(draw2);
 
-            var elements = container.getElementsByTagName('div').length;
+            var elements = container1.getElementsByTagName('div').length;
             if (elements % 2 == 0 || elements == 0) {
                 createBox(hihat);
             }
