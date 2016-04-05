@@ -379,7 +379,7 @@ the number of data values you will have to play with for the visualization*/
     var newBoxes5 = document.getElementById('container5');
     var fps = 6;
 
-    
+
     //DRAW BOXES
     function createBox(instrument) {
 
@@ -395,39 +395,72 @@ the number of data values you will have to play with for the visualization*/
         box.style.fontFamily = 'freight-text-pro, Times New Roman, serif';
 
 
-        if (instrument === hihat) {
+        // if (instrument === hihat) {
 
-            hihat();
-            box.innerHTML = '<div id="hihatDiv">Hi-Hat</div>';
-            newBoxes.appendChild(box);
-            newBoxes.style.width = '900px';
-            newBoxes.style.height = '60px';
-            newBoxes.style.position = 'relative';
-            newBoxes.style.border = '10px solid white';
-            newBoxes.style.display = 'in-line';
+        //     hihat();
+        //     box.innerHTML = '<div id="hihatDiv">Hi-Hat</div>';
+        //     newBoxes.appendChild(box);
+        //     newBoxes.style.width = '900px';
+        //     newBoxes.style.height = '60px';
+        //     newBoxes.style.position = 'relative';
+        //     newBoxes.style.border = '10px solid white';
+        //     newBoxes.style.display = 'in-line';
 
-        } else if (instrument === kick) {
+        // } else if (instrument === kick) {
 
-            kick();
-            box.innerHTML = '<div class=\'test\'>Kick</div>';
-            newBoxes2.appendChild(box);
-            newBoxes2.style.width = '900px';
-            newBoxes2.style.height = '60px';
-            newBoxes2.style.position = 'relative';
-            newBoxes2.style.display = 'in-line';
-            newBoxes2.style.border = '10px solid white';
+        //     kick();
+        //     box.innerHTML = '<div class=\'test\'>Kick</div>';
+        //     newBoxes2.appendChild(box);
+        //     newBoxes2.style.width = '900px';
+        //     newBoxes2.style.height = '60px';
+        //     newBoxes2.style.position = 'relative';
+        //     newBoxes2.style.display = 'in-line';
+        //     newBoxes2.style.border = '10px solid white';
 
-        } else if (instrument === snare) {
+        // } else if (instrument === snare) {
 
-            snare();
-            box.innerHTML = '<div class=\'test\'>Snare</div>';
-            newBoxes3.appendChild(box);
-            newBoxes3.style.width = '900px';
-            newBoxes3.style.height = '60px';
-            newBoxes3.style.position = 'relative';
-            newBoxes3.style.display = 'in-line';
-            newBoxes3.style.border = '10px solid white';
-        };
+        //     snare();
+        //     box.innerHTML = '<div class=\'test\'>Snare</div>';
+        //     newBoxes3.appendChild(box);
+        //     newBoxes3.style.width = '900px';
+        //     newBoxes3.style.height = '60px';
+        //     newBoxes3.style.position = 'relative';
+        //     newBoxes3.style.display = 'in-line';
+        //     newBoxes3.style.border = '10px solid white';
+        // };
+
+        switch (true) {
+            case instrument === hihat:
+                hihat();
+                box.innerHTML = '<div id="hihatDiv">Hi-Hat</div>';
+                newBoxes.appendChild(box);
+                newBoxes.style.width = '900px';
+                newBoxes.style.height = '60px';
+                newBoxes.style.position = 'relative';
+                newBoxes.style.border = '10px solid white';
+                newBoxes.style.display = 'in-line';
+                break;
+            case instrument === kick:
+                kick();
+                box.innerHTML = '<div class=\'test\'>Kick</div>';
+                newBoxes2.appendChild(box);
+                newBoxes2.style.width = '900px';
+                newBoxes2.style.height = '60px';
+                newBoxes2.style.position = 'relative';
+                newBoxes2.style.display = 'in-line';
+                newBoxes2.style.border = '10px solid white';
+                break;
+            case instrument === snare:
+                snare();
+                box.innerHTML = '<div class=\'test\'>Snare</div>';
+                newBoxes3.appendChild(box);
+                newBoxes3.style.width = '900px';
+                newBoxes3.style.height = '60px';
+                newBoxes3.style.position = 'relative';
+                newBoxes3.style.display = 'in-line';
+                newBoxes3.style.border = '10px solid white';
+                break;
+        }
 
     };
 
