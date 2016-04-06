@@ -75,7 +75,7 @@
 
         gainOsc3.gain.value = 0;
         gainOsc3.gain.setValueAtTime(0, audioContext.currentTime);
-        gainOsc3.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+        //gainOsc3.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
 
         //Connections
         osc3.connect(gainOsc3);
@@ -394,41 +394,6 @@ the number of data values you will have to play with for the visualization*/
         box.style.fontSize = 'Small';
         box.style.fontFamily = 'freight-text-pro, Times New Roman, serif';
 
-
-        // if (instrument === hihat) {
-
-        //     hihat();
-        //     box.innerHTML = '<div id="hihatDiv">Hi-Hat</div>';
-        //     newBoxes.appendChild(box);
-        //     newBoxes.style.width = '900px';
-        //     newBoxes.style.height = '60px';
-        //     newBoxes.style.position = 'relative';
-        //     newBoxes.style.border = '10px solid white';
-        //     newBoxes.style.display = 'in-line';
-
-        // } else if (instrument === kick) {
-
-        //     kick();
-        //     box.innerHTML = '<div class=\'test\'>Kick</div>';
-        //     newBoxes2.appendChild(box);
-        //     newBoxes2.style.width = '900px';
-        //     newBoxes2.style.height = '60px';
-        //     newBoxes2.style.position = 'relative';
-        //     newBoxes2.style.display = 'in-line';
-        //     newBoxes2.style.border = '10px solid white';
-
-        // } else if (instrument === snare) {
-
-        //     snare();
-        //     box.innerHTML = '<div class=\'test\'>Snare</div>';
-        //     newBoxes3.appendChild(box);
-        //     newBoxes3.style.width = '900px';
-        //     newBoxes3.style.height = '60px';
-        //     newBoxes3.style.position = 'relative';
-        //     newBoxes3.style.display = 'in-line';
-        //     newBoxes3.style.border = '10px solid white';
-        // };
-
         switch (true) {
             case instrument === hihat:
                 hihat();
@@ -471,6 +436,7 @@ the number of data values you will have to play with for the visualization*/
             requestAnimationFrame(draw2);
 
             var elements = container1.getElementsByTagName('div').length;
+
             if (elements % 2 == 0 || elements == 0) {
                 createBox(hihat);
             }
@@ -481,6 +447,7 @@ the number of data values you will have to play with for the visualization*/
                 createBox(snare);
                 createBox(kick);
             }
+
             while (newBoxes.hasChildNodes() && elements > 20) {
                 newBoxes.removeChild(newBoxes.firstChild);
             }
