@@ -1,4 +1,4 @@
-(function() {
+(function init() {
     function createAudioContext(desiredSampleRate) {
         var AudioCtor = window.AudioContext || window.webkitAudioContext;
         desiredSampleRate = typeof desiredSampleRate === 'number' ? desiredSampleRate : 44100;
@@ -483,3 +483,4 @@ the number of data values you will have to play with for the visualization*/
     }
 
 }());
+window.addEventListener('load', init, false);
