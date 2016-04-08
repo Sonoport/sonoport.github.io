@@ -1,4 +1,4 @@
-(function init() {
+(function() {
     function createAudioContext(desiredSampleRate) {
         var AudioCtor = window.AudioContext || window.webkitAudioContext;
         desiredSampleRate = typeof desiredSampleRate === 'number' ? desiredSampleRate : 44100;
@@ -441,27 +441,29 @@ the number of data values you will have to play with for the visualization*/
 
             requestAnimationFrame(draw2);
 
-            var elements = container1.getElementsByTagName('div').length;
+            if (container1 != null) {
+                var elements = container1.getElementsByTagName('div').length;
 
-            if (elements % 2 == 0 || elements == 0) {
-                createBox(hihat);
-            }
-            if (elements == 0 || elements == 12) {
-                createBox(kick);
-            }
-            if (elements == 6 || elements == 18) {
-                createBox(snare);
-                createBox(kick);
-            }
+                if (elements % 2 == 0 || elements == 0) {
+                    createBox(hihat);
+                }
+                if (elements == 0 || elements == 12) {
+                    createBox(kick);
+                }
+                if (elements == 6 || elements == 18) {
+                    createBox(snare);
+                    createBox(kick);
+                }
 
-            while (newBoxes.hasChildNodes() && elements > 20) {
-                newBoxes.removeChild(newBoxes.firstChild);
-            }
-            while (newBoxes2.hasChildNodes() && elements > 20) {
-                newBoxes2.removeChild(newBoxes2.firstChild);
-            }
-            while (newBoxes3.hasChildNodes() && elements > 20) {
-                newBoxes3.removeChild(newBoxes3.firstChild);
+                while (newBoxes.hasChildNodes() && elements > 20) {
+                    newBoxes.removeChild(newBoxes.firstChild);
+                }
+                while (newBoxes2.hasChildNodes() && elements > 20) {
+                    newBoxes2.removeChild(newBoxes2.firstChild);
+                }
+                while (newBoxes3.hasChildNodes() && elements > 20) {
+                    newBoxes3.removeChild(newBoxes3.firstChild);
+                }
             }
         }, 1000 / fps);
 
@@ -483,4 +485,3 @@ the number of data values you will have to play with for the visualization*/
     }
 
 }());
-window.addEventListener('load', init, false);
