@@ -398,7 +398,7 @@ the number of data values you will have to play with for the visualization*/
             case instrument === hihat:
                 hihat();
                 box.innerHTML = '<div id="hihatDiv">Hi-Hat</div>';
-                if(box != null){
+                if(newBoxes != null){
                 newBoxes.appendChild(box);
                 newBoxes.style.width = '900px';
                 newBoxes.style.height = '60px';
@@ -410,7 +410,7 @@ the number of data values you will have to play with for the visualization*/
             case instrument === kick:
                 kick();
                 box.innerHTML = '<div class=\'test\'>Kick</div>';
-                if(box != null){
+                if(newBoxes2 != null){
                 newBoxes2.appendChild(box);
                 newBoxes2.style.width = '900px';
                 newBoxes2.style.height = '60px';
@@ -421,8 +421,8 @@ the number of data values you will have to play with for the visualization*/
                 break;
             case instrument === snare:
                 snare();
-                if(box != null){
                 box.innerHTML = '<div class=\'test\'>Snare</div>';
+                if(newBoxes3 != null){
                 newBoxes3.appendChild(box);
                 newBoxes3.style.width = '900px';
                 newBoxes3.style.height = '60px';
