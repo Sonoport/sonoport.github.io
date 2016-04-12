@@ -215,12 +215,19 @@
     kickOsc2.start(audioContext.currentTime);
 
     //VISUALISING THE KICK WAVEFORM
-    var canvas = document.getElementById('myCanvas');
+    var canvasHook = document.querySelector('.canvasHook');
+    //var canvas = document.getElementById('myCanvas');
+    var canvas = document.createElement("canvas");
+    canvas.style.width = '600px';
+    canvas.style.height = '200px';
+    if(canvas != null){
+    canvasHook.appendChild(canvas);
+    }
     var analyser = audioContext.createAnalyser();
     var WIDTH = 600;
     var HEIGHT = 200;
     kickMixGain.connect(analyser);
-    var canvas = document.querySelector('.visualizer');
+    //var canvas = document.querySelector('.visualizer');
     var myCanvas = canvas.getContext('2d');
     analyser.fftSize = 2048;
     var bufferLength = analyser.frequencyBinCount;
@@ -437,9 +444,9 @@ the number of data values you will have to play with for the visualization*/
 
     function draw2() {
 
-        var Timer = setTimeout(function() {
+        var Timer = setInterval(function() {
 
-            requestAnimationFrame(draw2);
+            //requestAnimationFrame(draw2);
 
             if (container1 != null) {
                 var elements = container1.getElementsByTagName('div').length;
@@ -470,7 +477,7 @@ the number of data values you will have to play with for the visualization*/
         var stopIt = document.getElementById('stopButton');
 
         stopIt.addEventListener('click', function() {
-            clearTimeout(Timer);
+            clearInterval(Timer);
         });
     }
 

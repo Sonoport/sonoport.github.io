@@ -75,7 +75,7 @@ osc2.frequency.value = 80;
 
 At this moment in time, if you were to listen, it sounds like this.
 
-<canvas class="visualizer";id="myCanvas"width="600" height="200";></canvas>
+<div class="canvasHook"></div>
 
 Here comes the part where our knowledge of audio params comes in handy! If you're not sure what that is, do check out our previous blog post on [Understanding AudioParams](http://sonoport.github.io/audio-params.html). AudioParams are integral in letting us manipulate audio using Web Audio API and if you haven't check that out you, you should!
 
