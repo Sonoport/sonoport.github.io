@@ -11,7 +11,7 @@ facebook_username:  Sonoport
 
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 permalink: none
 paginate: 5
