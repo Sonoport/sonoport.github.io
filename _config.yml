@@ -14,5 +14,7 @@ facebook_username:  Sonoport
 markdown: kramdown
 highlighter: rouge
 permalink: none
+gems: [jekyll-paginate]
 paginate: 5
+paginate_path: "page:num"
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]

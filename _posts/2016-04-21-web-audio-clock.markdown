@@ -74,6 +74,23 @@ scheduler();
 
 What's happening here is that the `scheduler()` is a recursive function that is checking if any notes needs to be scheduled and it is doing so 10 ms before the `audioContext.currentTime` catches up. So in this case if there are notes that needs to be scheduled, it will then schedule them. 
 
+Another easier way to do this without using recursion is to use `setInterval()`. So the `scheduler()` function is being invoked every 50ms to check for the `nextNotetime`.
+
+```
+function scheduler() {
+
+    while(nextNotetime < audioContext.currentTime + 0.1) {
+
+        nextNotetime += 0.5;
+        nextNote.innerHTML = nextNotetime;
+    }
+}
+
+window.setInterval(scheduler, 50.0);
+```
+
+In the end it's up to you to use the method that would be easier for you to understand. 
+
 <p data-height="266" data-theme-id="dark" data-slug-hash="VadJoN" data-default-tab="result" data-user="aqilahmisuary" data-embed-version="2" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/aqilahmisuary/pen/VadJoN/">Scheduler Function (with Sound)</a> by Aqilah Misuary (<a href="http://codepen.io/aqilahmisuary">@aqilahmisuary</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
